@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.rendszerfejlesztes">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,24 +12,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rendszerfejlesztes">
         <activity
-            android:name=".karbantarto"
-            android:exported="true" />
-        <activity
-            android:name=".operator"
-            android:exported="true" />
-        <activity
-            android:name=".eszkozfelelos"
-            android:exported="true" />
-        <activity
-            android:name=".admin"
-            android:exported="true" />
-            android:name=".deviceCreator_activty"
+            android:name=".device.deviceInformation_activity"
             android:exported="false" />
         <activity
-            android:name=".deviceManager_activity"
+            android:name=".interfaces.repairer_activity"
+            android:exported="true" />
+        <activity
+            android:name=".interfaces.operator_activity"
+            android:exported="true" />
+        <activity
+            android:name=".interfaces.devicePerson_activity"
+            android:exported="true" />
+        <activity
+            android:name=".interfaces.adminPage_activity"
+            android:exported="true" />
+        <activity
+            android:name=".device.deviceManager_activity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".login_activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

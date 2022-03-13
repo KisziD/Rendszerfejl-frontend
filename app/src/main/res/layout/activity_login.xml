@@ -5,38 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".device.deviceManager_activity"
+    tools:context=".login_activity"
     android:background="@drawable/backg">
 
-    <Spinner
-        android:id="@+id/spinner_cat"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        android:foregroundTint="#D5C4C4"
-        android:spinnerMode="dropdown" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list"
+    <EditText
+        android:id="@+id/usern_et"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="textPersonName"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="30dp">
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="240dp"/>
 
-    </androidx.recyclerview.widget.RecyclerView>
+    <EditText
+        android:id="@+id/pass_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="30dp" />
 
     <Button
-        android:id="@+id/button_newdev"
+        android:id="@+id/login_bt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
+        android:backgroundTint="#FF50ACF6"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="30dp"
-        android:backgroundTint="#FF50ACF6"
-        android:text="Add Device" />
+        android:text="Login" />
 
 </LinearLayout>

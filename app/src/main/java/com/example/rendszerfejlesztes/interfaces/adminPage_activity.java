@@ -1,25 +1,28 @@
-package com.example.rendszerfejlesztes;
+package com.example.rendszerfejlesztes.interfaces;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class karbantarto extends AppCompatActivity {
-    TextView adatok;
+import com.example.rendszerfejlesztes.R;
+
+public class adminPage_activity extends AppCompatActivity {
+    TextView userData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_karbantarto);
+        setContentView(R.layout.activity_admin);
 
-        adatok = findViewById(R.id.adatok);
+        userData = findViewById(R.id.datas);
 
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             String u = getIntent().getStringExtra("user");
             String j = getIntent().getStringExtra("job");
-            adatok.setText(u + " (" + j + ")");
+            userData.setText(u + " (" + j + ")");
         }
     }
+
 }
