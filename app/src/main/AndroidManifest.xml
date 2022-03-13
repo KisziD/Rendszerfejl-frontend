@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rendszerfejlesztes">
         <activity
+            android:name=".karbantarto"
+            android:exported="true" />
+        <activity
+            android:name=".operator"
+            android:exported="true" />
+        <activity
+            android:name=".eszkozfelelos"
+            android:exported="true" />
+        <activity
+            android:name=".admin"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
