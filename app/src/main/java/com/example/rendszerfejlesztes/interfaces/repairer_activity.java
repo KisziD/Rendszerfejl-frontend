@@ -14,7 +14,7 @@ public class repairer_activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_karbantarto);
+        setContentView(R.layout.activity_repairer);
 
         userDatas = findViewById(R.id.datas);
 

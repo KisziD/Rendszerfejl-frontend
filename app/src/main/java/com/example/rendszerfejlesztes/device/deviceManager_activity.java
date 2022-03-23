@@ -12,41 +12,45 @@ import android.widget.Spinner;
 
 import com.example.rendszerfejlesztes.R;
 
-import java.util.ArrayList;
-
 public class deviceManager_activity extends AppCompatActivity {
 
-    Button devicecreator;
+    Button devicecreator, categoryadder;
     Spinner spinner;
     RecyclerView list;
 
-    ArrayList<String> categoryList = new ArrayList<>();  //need to be filled with categories
-    String[] cats = categoryList.toArray(new String[categoryList.size()]);
-    ArrayAdapter<String> categoriaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categoryList);
+    //ArrayList<String> categoriaList = new ArrayList<>();
+    String[] categories = new String[]{};
+    ArrayAdapter<String> categoriaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categories);
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_manager);
+
+        categoryadder = findViewById(R.id.button_newcat);
         devicecreator = findViewById(R.id.button_newdev);
         list = findViewById(R.id.list);
 
-        categoriaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner dropdown = findViewById(R.id.spinner_cat);
         dropdown.setAdapter(categoriaAdapter);
+
+        String category = spinner.getSelectedItem().toString();         //kategória lekérés legördülő menüből
 
         devicecreator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent n = new Intent(getApplicationContext(), deviceCreator_activity.class);
-                startActivity(n);
+                Intent uj = new Intent(getApplicationContext(), deviceManager_activity.class);
+                startActivity(uj);
             }
+        });
 
-            String category = spinner.getSelectedItem().toString();
-
-
-
+        categoryadder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent uj = new Intent(getApplicationContext(), categoryCreator_activity.class);
+                startActivity(uj);
+            }
         });
 
 

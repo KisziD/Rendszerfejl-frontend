@@ -1,4 +1,4 @@
-package com.example.rendszerfejlesztes;
+package com.example.rendszerfejlesztes.interfaces;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.rendszerfejlesztes.R;
 import com.example.rendszerfejlesztes.interfaces.adminPage_activity;
 import com.example.rendszerfejlesztes.interfaces.devicePerson_activity;
 import com.example.rendszerfejlesztes.interfaces.operator_activity;

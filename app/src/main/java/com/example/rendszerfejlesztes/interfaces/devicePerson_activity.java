@@ -14,7 +14,7 @@ public class devicePerson_activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eszkozfelelos);
+        setContentView(R.layout.activity_device_person);
 
         userDatas = findViewById(R.id.datas);
 
