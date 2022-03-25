@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.rendszerfejlesztes">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,19 +12,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rendszerfejlesztes">
         <activity
-            android:name=".karbantarto"
+            android:name=".device.specialistCreator_activity"
+            android:exported="false" />
+        <activity
+            android:name=".device.categoryCreator_activity"
+            android:exported="false" />
+        <activity
+            android:name=".device.deviceInformation_activity"
+            android:exported="false" />
+        <activity
+            android:name=".interfaces.repairer_activity"
             android:exported="true" />
         <activity
-            android:name=".operator"
+            android:name=".interfaces.operator_activity"
             android:exported="true" />
         <activity
-            android:name=".eszkozfelelos"
+            android:name=".interfaces.devicePerson_activity"
             android:exported="true" />
         <activity
-            android:name=".admin"
+            android:name=".interfaces.adminPage_activity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".interfaces.login_activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
