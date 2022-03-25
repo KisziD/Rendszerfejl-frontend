@@ -15,7 +15,7 @@ public class deviceCreator_activity extends AppCompatActivity {
 
     EditText name, place, desc;
     Button add, back;
-    deviceServices dService = new deviceServices();
+    deviceServices dService = new deviceServices(deviceCreator_activity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +32,10 @@ public class deviceCreator_activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dService.addDevice(name.getText().toString(),place.getText().toString(),desc.getText().toString());
+
             }
         });
+
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,13 +1,13 @@
 package com.example.rendszerfejlesztes.device;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.example.rendszerfejlesztes.R;
@@ -16,9 +16,8 @@ public class deviceManager_activity extends AppCompatActivity {
 
     Button devicecreator, categoryadder;
     Spinner spinner;
-    RecyclerView list;
+    ListView list;
 
-    //ArrayList<String> categoriaList = new ArrayList<>();
     String[] categories = new String[]{};
     ArrayAdapter<String> categoriaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categories);
 
