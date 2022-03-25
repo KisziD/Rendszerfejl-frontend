@@ -1,26 +1,18 @@
 package com.example.rendszerfejlesztes.services;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.os.AsyncTask;
-import android.widget.Toast;
 
-import com.example.rendszerfejlesztes.interfaces.login_activity;
-
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
+import java.io.OutputStream;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -28,135 +20,78 @@ import javax.net.ssl.HttpsURLConnection;
 public class loginServices {
 
     public static boolean checkToken() {
-        //folyamatban...
-        return true;
-    }
-
-    public static class token extends AsyncTask<String, String, String> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
+        try {
+            restApiService.token();
+            return true;
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+            System.out.println("ERROR");
+            return false;
         }
-
-        @Override
-        protected String doInBackground(String... params) {
-            String result = "";
-            try {
-                URL url;
-                HttpURLConnection urlConnection = null;
-                try {
-                    url = new URL("kisziftp.tplinkdns.com/api/User");
-                    urlConnection = (HttpURLConnection) url.openConnection();
-                    InputStream in = urlConnection.getInputStream();
-                    InputStreamReader isw = new InputStreamReader(in);
-                    int data = isw.read();
-                    while (data != -1) {
-                        result += (char) data;
-                        data = isw.read();
-                    }
-                    return result;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    if (urlConnection != null) {
-                        urlConnection.disconnect();
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                return "Exception: " + e.getMessage();
-            }
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            String my_users = "";
-            try {
-                JSONObject jsonObject = null;
-                try {
-                    jsonObject = new JSONObject(s);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                JSONArray jsonArray1 = jsonObject.getJSONArray("user");
-                JSONObject jsonObject1 = jsonArray1.getJSONObject(1);
-                String id = jsonObject1.getString("id");
-                String name = jsonObject1.getString("username");
-                //String pwd = jsonObject1.getString("password");
-                my_users = "User ID: " + id + "\n" + "Name: " + name + "\n\n";
-                System.out.println(my_users);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-
     }
 
 
-    public static class connectToDB extends AsyncTask<String, String, String> {
+    public static class restApiService {
+        /*final static String url = "";
+        final static String id = "1";
+        final static String token = "1136971380";*/
+        final static String pwd = "kiszi";
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            String result = "";
-            try {
-                URL url;
-                HttpURLConnection urlConnection = null;
-                try {
-                    url = new URL("kisziftp.tplinkdns.com/api/User");
-                    urlConnection = (HttpURLConnection) url.openConnection();
-                    InputStream in = urlConnection.getInputStream();
-                    InputStreamReader isw = new InputStreamReader(in);
-                    int data = isw.read();
-                    while (data != -1) {
-                        result += (char) data;
-                        data = isw.read();
-                    }
-                    return result;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    if (urlConnection != null) {
-                        urlConnection.disconnect();
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                return "Exception: " + e.getMessage();
+        public static void token() throws IOException, JSONException {
+            URL url = new URL("kisziftp.tplinkdns.com/api/User/token");
+            HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Content-Type", "application/json; utf-8");
+            connection.setRequestProperty("Accept", "application/json");
+            connection.setDoOutput(true);
+            Map json=new HashMap();
+            json.put("id",new Integer(1));
+            json.put("token",new Double(1136971380));
+            String jsonInputString = json.toString();
+            System.out.println(jsonInputString);
+            try(OutputStream os = connection.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes("utf-8");
+                os.write(input, 0, input.length);
             }
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            String my_users = "";
-            try {
-                JSONObject jsonObject = null;
-                try {
-                    jsonObject = new JSONObject(s);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+            try(BufferedReader br = new BufferedReader(
+                    new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+                StringBuilder response = new StringBuilder();
+                String responseLine = null;
+                while ((responseLine = br.readLine()) != null) {
+                    response.append(responseLine.trim());
                 }
-
-                JSONArray jsonArray1 = jsonObject.getJSONArray("user");
-                for(int index_no=0;index_no<jsonArray1.length();index_no++) {
-                    JSONObject jsonObject1 = jsonArray1.getJSONObject(index_no);
-                    String id = jsonObject1.getString("id");
-                    String name = jsonObject1.getString("username");
-                    //String pwd = jsonObject1.getString("password");
-                    my_users = "User ID: " + id + "\n" + "Name: " + name + "\n\n";
-                }
-                //System.out.println(my_users);
-            } catch (JSONException e) {
-                e.printStackTrace();
+                System.out.println(response.toString());
             }
         }
+
+        public static void login() throws IOException, JSONException {
+            URL url = new URL("kisziftp.tplinkdns.com/api/User/login");
+            HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Content-Type", "application/json; utf-8");
+            connection.setRequestProperty("Accept", "application/json");
+            connection.setDoOutput(true);
+            Map json=new HashMap();
+            json.put("id",new Integer(1));
+            json.put("username","kiszi");
+            int hashedPwd = pwd.hashCode();
+            json.put("password", new Integer(hashedPwd));
+            String jsonInputString = json.toString();
+            try(OutputStream os = connection.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes("utf-8");
+                os.write(input, 0, input.length);
+            }
+            try(BufferedReader br = new BufferedReader(
+                    new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+                StringBuilder response = new StringBuilder();
+                String responseLine = null;
+                while ((responseLine = br.readLine()) != null) {
+                    response.append(responseLine.trim());
+                }
+                System.out.println(response.toString());
+            }
+        }
+
     }
 
 

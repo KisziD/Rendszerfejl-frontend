@@ -3,19 +3,20 @@ package com.example.rendszerfejlesztes.interfaces;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.rendszerfejlesztes.R;
-import com.example.rendszerfejlesztes.interfaces.adminPage_activity;
-import com.example.rendszerfejlesztes.interfaces.devicePerson_activity;
-import com.example.rendszerfejlesztes.interfaces.operator_activity;
-import com.example.rendszerfejlesztes.interfaces.repairer_activity;
 import com.example.rendszerfejlesztes.services.loginServices;
+
+import org.json.JSONException;
+
+import java.io.IOException;
 
 public class login_activity extends AppCompatActivity {
 
@@ -23,6 +24,7 @@ public class login_activity extends AppCompatActivity {
     String speciality;
     Button loginButton;
     Boolean validToken = false;
+    String baseUrl, uname, password;
 
 
     @Override
@@ -33,21 +35,25 @@ public class login_activity extends AppCompatActivity {
         username = findViewById(R.id.usern_et);
         pwd = findViewById(R.id.pass_et);
         loginButton = findViewById(R.id.login_bt);
+        baseUrl = "kisziftp.tplinkdns.com/api/User/login";
 
         validToken = loginServices.checkToken();
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loginServices.token connection = new loginServices.token();
-                connection.execute();
-                //successDBconnection_login(v);
+                try {
+                    loginServices.restApiService.login();
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                    Log.d("!!! - ERROR", " with login");
+                }
             }
         });
     }
 
-
-    public void successDBconnection_login (View v) {
+    public void successDBconnection_login(View v) {
         //majd lekérni milyen beosztású a dolgozó: admin/eszkozfelelos/operator/karbantarto
         Intent i = new Intent();
         switch(speciality) {
@@ -72,7 +78,8 @@ public class login_activity extends AppCompatActivity {
         }
     }
 
-    public void sendData(Intent i) {
+
+    private void sendData(Intent i) {
         i.putExtra("user", username.getText().toString());
         i.putExtra("job", speciality);
         setResult(RESULT_OK,i);
