@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.rendszerfejlesztes.R;
+import com.example.rendszerfejlesztes.services.loginServices;
 
 public class adminPage_activity extends AppCompatActivity {
     TextView userData;
@@ -17,12 +18,7 @@ public class adminPage_activity extends AppCompatActivity {
 
         userData = findViewById(R.id.datas);
 
-        Bundle extras = getIntent().getExtras();
-        if(extras != null) {
-            String u = getIntent().getStringExtra("user");
-            String j = getIntent().getStringExtra("job");
-            userData.setText(u + " (" + j + ")");
-        }
+        loginServices.getData(userData,getIntent());
     }
 
 }

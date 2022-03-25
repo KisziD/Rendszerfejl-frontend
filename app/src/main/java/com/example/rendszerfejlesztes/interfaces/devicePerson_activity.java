@@ -6,23 +6,19 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.rendszerfejlesztes.R;
+import com.example.rendszerfejlesztes.services.loginServices;
 
 public class devicePerson_activity extends AppCompatActivity {
 
-    TextView userDatas;
+    TextView userData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_person);
 
-        userDatas = findViewById(R.id.datas);
+        userData = findViewById(R.id.datas);
 
-        Bundle extras = getIntent().getExtras();
-        if(extras != null) {
-            String u = getIntent().getStringExtra("user");
-            String j = getIntent().getStringExtra("job");
-            userDatas.setText(u + " (" + j + ")");
-        }
+        loginServices.getData(userData,getIntent());
     }
 }
