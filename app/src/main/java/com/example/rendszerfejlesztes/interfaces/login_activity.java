@@ -5,19 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.rendszerfejlesztes.R;
+import com.example.rendszerfejlesztes.device.deviceManager_activity;
 import com.example.rendszerfejlesztes.interfaces.adminPage_activity;
 import com.example.rendszerfejlesztes.interfaces.devicePerson_activity;
 import com.example.rendszerfejlesztes.interfaces.operator_activity;
 import com.example.rendszerfejlesztes.interfaces.repairer_activity;
+import com.example.rendszerfejlesztes.services.loginServices;
 
 public class login_activity extends AppCompatActivity {
 
     EditText username, pwd;
     String speciality;
+    Button login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +30,37 @@ public class login_activity extends AppCompatActivity {
 
         username = findViewById(R.id.usern_et);
         pwd = findViewById(R.id.pass_et);
+        login = findViewById(R.id.login_bt);
+
+        checkToken();
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                login();
+            }
+        });
     }
 
-    public void login (View v) {
-        //az adatbázisból leellenőrözni, hogy helyesek-e a belé pési adatok
-        //majd lekérni milyen beosztású a dolgozó: admin/eszkozfelelos/operator/karbantarto
-        Intent i = new Intent();
+    public void checkToken () {
+        loginServices ls = new loginServices(this);
+        ls.checkToken(new loginServices.VolleyResponseTokenListener() {
+            @Override
+            public void onError(String message) {
+
+            }
+
+            @Override
+            public void onResponse(String response) {
+                    if(response.equals("SUCCESS")) {
+                        Intent i = new Intent(login_activity.this, deviceManager_activity.class);
+                        startActivity(i);
+                    } else {
+                        Toast.makeText(login_activity.this, "Please log in!", Toast.LENGTH_LONG).show();
+                    }
+            }
+        });
+        /*
         switch(speciality) {
             case "admin":
                 i.setClass(this, adminPage_activity.class);
@@ -51,7 +80,27 @@ public class login_activity extends AppCompatActivity {
                 break;
             default:
                 Toast.makeText(this,"No such user is in the system",Toast.LENGTH_LONG).show();
-        }
+        }*/
+    }
+
+    public void login () {
+        loginServices ls = new loginServices(this);
+        ls.checkLogin(username.getText().toString(), pwd.getText().toString(), new loginServices.VolleyResponseLoginListener() {
+            @Override
+            public void onError(String message) {
+
+            }
+
+            @Override
+            public void onResponse(String response) {
+                if(response.equals("SUCCESS")) {
+                    Intent i = new Intent(login_activity.this, deviceManager_activity.class);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(login_activity.this, "Please log in!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     private void sendData(Intent i) {
