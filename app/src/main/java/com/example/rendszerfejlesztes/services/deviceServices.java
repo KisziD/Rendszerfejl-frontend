@@ -16,7 +16,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class deviceServices{
 
@@ -24,7 +23,6 @@ public class deviceServices{
     {
         void onError(String message);
         void onResponse(ArrayList<DeviceModel> deviceModels);
-
     }
 
     public interface VolleyResponseGETDEVICEListener
