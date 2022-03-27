@@ -18,15 +18,13 @@
         android:foregroundTint="#D5C4C4"
         android:spinnerMode="dropdown" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="400dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="30dp">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_marginBottom="30dp" />
 
     <Button
         android:id="@+id/button_newdev"
