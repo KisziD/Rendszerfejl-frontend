@@ -46,14 +46,14 @@ public class deviceServices{
         this.context = context;
     }
 
-    public void addDevice(Integer cate, String name, String place, String desc,VolleyResponsePOSTListener volleyResponsePOSTListener) {
+    public void addDevice(String cate, String name, String place, String desc,VolleyResponsePOSTListener volleyResponsePOSTListener) {
 
         String post_url = DEVICE_POST;
 
         JSONObject postData = new JSONObject();
         try {
             postData.put("name", name);
-            postData.put("categoryID", cate);
+            postData.put("categoryName", cate);
             postData.put("location", place);
             postData.put("description", desc);
         } catch (JSONException e) {
@@ -86,7 +86,7 @@ public class deviceServices{
                 try {
                         dm.setId(response.getInt("id"));
                         dm.setName(response.getString("name"));
-                        dm.setCatID(response.getInt("categoryID"));
+                        dm.setCategoryName(response.getString("categoryName"));
                         dm.setLocation(response.getString("location"));
                         dm.setDesc(response.getString("description"));
                 }
@@ -113,18 +113,13 @@ public class deviceServices{
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url,null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                Integer id = 0;
-                String name ="";
-                Integer catID = 0;
-                String location = "";
-                String desc = "";
                 try {
                     for (int i = 0; i < response.length(); i++) {
                         DeviceModel dm = new DeviceModel();
                         JSONObject deviceInfo = response.getJSONObject(i);
                         dm.setId(deviceInfo.getInt("id"));
                         dm.setName(deviceInfo.getString("name"));
-                        dm.setCatID(deviceInfo.getInt("categoryID"));
+                        dm.setCategoryName(deviceInfo.getString("categoryName"));
                         dm.setLocation(deviceInfo.getString("location"));
                         dm.setDesc(deviceInfo.getString("description"));
                         list.add(dm);

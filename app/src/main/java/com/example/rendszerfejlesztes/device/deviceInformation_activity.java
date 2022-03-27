@@ -16,7 +16,6 @@ import java.util.ArrayList;
 public class deviceInformation_activity extends AppCompatActivity {
 
     EditText cat, name, place, desc;
-    DeviceModel deviceModel = new DeviceModel();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +48,7 @@ public class deviceInformation_activity extends AppCompatActivity {
 
                     @Override
                     public void onResponse(DeviceModel deviceModel) {
-                        cat.setText(deviceModel.getCatID().toString());
+                        cat.setText(deviceModel.getCategoryName());
                         name.setText(deviceModel.getName());
                         place.setText(deviceModel.getLocation());
                         desc.setText(deviceModel.getDesc());

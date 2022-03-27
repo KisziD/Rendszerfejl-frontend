@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,18 +15,17 @@ import android.widget.Toast;
 
 import com.example.rendszerfejlesztes.R;
 import com.example.rendszerfejlesztes.models.DeviceModel;
+import com.example.rendszerfejlesztes.services.categoryServices;
 import com.example.rendszerfejlesztes.services.deviceServices;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class deviceManager_activity extends AppCompatActivity {
 
     Button devicecreator, categoryadder;
     Spinner spinner;
     ListView list;
-
-    //String[] categories = new String[]{};
-   // ArrayAdapter<String> categoriaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categories);
 
 
     @Override
@@ -36,12 +36,6 @@ public class deviceManager_activity extends AppCompatActivity {
         categoryadder = findViewById(R.id.button_newcat);
         devicecreator = findViewById(R.id.button_newdev);
         list = findViewById(R.id.list);
-
-        //Spinner dropdown = findViewById(R.id.spinner_cat);
-        //dropdown.setAdapter(categoriaAdapter);
-        //String category = spinner.getSelectedItem().toString();         //kategória lekérés legördülő menüből
-
-
 
         deviceServices dS = new deviceServices(deviceManager_activity.this);
         deviceServices.getDevices(new deviceServices.VolleyResponseListener() {
@@ -64,8 +58,6 @@ public class deviceManager_activity extends AppCompatActivity {
                 });
             }
         });
-
-
 
 
 
