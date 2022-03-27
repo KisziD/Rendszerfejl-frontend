@@ -36,9 +36,10 @@
         android:id="@+id/login_bt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#FF50ACF6"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:backgroundTint="#FF50ACF6"
+        android:onClick="login"
         android:text="Login" />
 
 </LinearLayout>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.example.rendszerfejlesztes.R;
 import com.example.rendszerfejlesztes.models.DeviceModel;
 import com.example.rendszerfejlesztes.services.deviceServices;
+import com.example.rendszerfejlesztes.services.loginServices;
 
 import java.util.ArrayList;
 
@@ -40,7 +42,6 @@ public class deviceManager_activity extends AppCompatActivity {
         //Spinner dropdown = findViewById(R.id.spinner_cat);
         //dropdown.setAdapter(categoriaAdapter);
         //String category = spinner.getSelectedItem().toString();         //kategória lekérés legördülő menüből
-
 
 
         deviceServices dS = new deviceServices(deviceManager_activity.this);

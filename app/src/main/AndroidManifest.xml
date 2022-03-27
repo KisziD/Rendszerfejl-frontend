@@ -19,7 +19,7 @@
             android:name=".interfaces.devicePerson_activity"
             android:exported="true" />
         <activity
-            android:name=".interfaces.login_activity"
+            android:name=".device.deviceManager_activity"
             android:exported="true" />
         <activity
             android:name=".interfaces.operator_activity"
@@ -40,7 +40,7 @@
             android:name=".device.specialistCreator_activity"
             android:exported="false" />
         <activity
-            android:name=".device.deviceManager_activity"
+            android:name=".interfaces.login_activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
