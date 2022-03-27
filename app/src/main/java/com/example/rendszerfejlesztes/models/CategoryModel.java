@@ -1,13 +1,13 @@
-package com.example.rendszerfejlesztes.database;
+package com.example.rendszerfejlesztes.models;
 
-public class categories {
+public class CategoryModel {
 
     private int id;
     private String name;
 
-    public categories(){}
+    public CategoryModel(){}
 
-    public categories(int id, String name){
+    public CategoryModel(int id, String name){
         this.id = id;
         this.name = name;
     }
