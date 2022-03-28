@@ -1,8 +1,6 @@
 package com.example.rendszerfejlesztes.services;
 
 import android.content.Context;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -19,32 +17,30 @@ import java.util.ArrayList;
 
 public class deviceServices{
 
-    public interface VolleyResponseListener
-    {
+    public interface VolleyResponseGETDEVICESListener {
         void onError(String message);
         void onResponse(ArrayList<DeviceModel> deviceModels);
     }
 
-    public interface VolleyResponseGETDEVICEListener
-    {
+    public interface VolleyResponseGETDEVICEListener {
         void onError(String message);
         void onResponse(DeviceModel dm);
     }
 
-    public interface VolleyResponsePOSTListener
-    {
+    public interface VolleyResponsePOSTListener {
         void onError(String message);
         void onResponse(String message);
     }
 
     public final static String DEVICES = "http://kisziftp.tplinkdns.com/api/Device";
-    public final static String DEVICE_POST = "http://kisziftp.tplinkdns.com/api/Device/add";
     public final static String DEVICE_ID = "http://kisziftp.tplinkdns.com/api/Device/all/";
+    public final static String DEVICE_POST = "http://kisziftp.tplinkdns.com/api/Device/add";
     static Context context;
 
     public deviceServices(Context context) {
         this.context = context;
     }
+
 
     public void addDevice(String cate, String name, String place, String desc,VolleyResponsePOSTListener volleyResponsePOSTListener) {
 
@@ -59,24 +55,22 @@ public class deviceServices{
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, post_url, postData, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                volleyResponsePOSTListener.onResponse("Device Added");
+                volleyResponsePOSTListener.onResponse("Device added");
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                volleyResponsePOSTListener.onError(error.toString());
+                volleyResponsePOSTListener.onError("Device addition failed");
             }
         });
         SingletonRequestQueue.getInstance(context).addToRequestQueue(request);
-
     }
 
-    public static void getDevice(Integer devID, final VolleyResponseGETDEVICEListener volleyResponseGETDEVICEListener)
-    {
+
+    public static void getDevice(Integer devID, final VolleyResponseGETDEVICEListener volleyResponseGETDEVICEListener) {
         String url = DEVICE_ID + devID;
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url,null, new Response.Listener<JSONObject>() {
@@ -98,15 +92,15 @@ public class deviceServices{
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error){
-                volleyResponseGETDEVICEListener.onError(error.toString());
+                volleyResponseGETDEVICEListener.onError("Getting device failed");
             }
         });
         SingletonRequestQueue.getInstance(context).addToRequestQueue(request);
     }
 
 
-    public static void getDevices(final VolleyResponseListener volleyResponseListener)
-    {
+    public static void getDevices(final VolleyResponseGETDEVICESListener volleyResponseGETDEVICESListener) {
+
         String url = DEVICES;
         ArrayList<DeviceModel> list = new ArrayList<>();
 
@@ -128,18 +122,14 @@ public class deviceServices{
                 catch (JSONException e){
                     e.printStackTrace();
                 }
-                volleyResponseListener.onResponse(list);
+                volleyResponseGETDEVICESListener.onResponse(list);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error){
-                volleyResponseListener.onError(error.toString());
+                volleyResponseGETDEVICESListener.onError("Getting devices failed");
             }
         });
         SingletonRequestQueue.getInstance(context).addToRequestQueue(request);
     }
-
 }
-
-
-

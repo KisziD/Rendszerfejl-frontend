@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Rendszerfejlesztes</string>
+    <string name="parent">Parent</string>
+    <string name="add">Add</string>
+    <string name="category">Category</string>
+    <string name="name">Name</string>
+    <string name="place">Place</string>
+    <string name="description">Description</string>
+    <string name="speciality">Speciality</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
 </resources>

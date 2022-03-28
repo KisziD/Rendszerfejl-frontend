@@ -37,7 +37,7 @@
             android:name=".device.deviceInformation_activity"
             android:exported="false" />
         <activity
-            android:name=".device.specialistCreator_activity"
+            android:name=".device.specialityCreator_activity"
             android:exported="false" />
         <activity
             android:name=".interfaces.login_activity"

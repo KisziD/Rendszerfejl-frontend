@@ -2,29 +2,23 @@ package com.example.rendszerfejlesztes.services;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.rendszerfejlesztes.models.DeviceModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
 public class loginServices {
 
-    public interface VolleyResponseTokenListener
-    {
+    public interface VolleyResponseTOKENListener {
         void onError(String message);
         void onResponse(String response);
     }
 
-    public interface VolleyResponseLoginListener
-    {
+    public interface VolleyResponseLOGINListener {
         void onError(String message);
         void onResponse(String response);
     }
@@ -52,7 +46,7 @@ public class loginServices {
         sharedPref.edit().putInt("token", token).commit();
     }
 
-    public void checkToken(VolleyResponseTokenListener volleyResponseTokenListener) {
+    public void checkToken(VolleyResponseTOKENListener volleyResponseTOKENListener) {
 
         String post_url = "http://kisziftp.tplinkdns.com/api/User/token";
 
@@ -61,19 +55,17 @@ public class loginServices {
         try {
             postData.put("id", Integer.parseInt(data[0]));
             postData.put("token", Integer.parseInt(data[1]));
-            //Log.d("Check: ", data[0] + ":" + data[1]);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, post_url, postData, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
                     if (response.getInt("response")==1)
-                        volleyResponseTokenListener.onResponse("SUCCESS");
+                        volleyResponseTOKENListener.onResponse("SUCCESS");
                     else if (response.getInt("response")==0)
-                        volleyResponseTokenListener.onResponse("FAIL");
+                        volleyResponseTOKENListener.onResponse("FAIL");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -81,14 +73,14 @@ public class loginServices {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                volleyResponseTokenListener.onError(error.toString());
+                volleyResponseTOKENListener.onError("Token check failed");
             }
         });
         SingletonRequestQueue.getInstance(context).addToRequestQueue(request);
-
     }
 
-    public void checkLogin(String username, String password, VolleyResponseLoginListener volleyResponseLoginListener) {
+
+    public void checkLogin(String username, String password, VolleyResponseLOGINListener volleyResponseLOGINListener) {
 
         String post_url = "http://kisziftp.tplinkdns.com/api/User/login";
 
@@ -99,17 +91,15 @@ public class loginServices {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, post_url, postData, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
                     if (response.getInt("token")==0)
-                        volleyResponseLoginListener.onResponse("FAIL");
+                        volleyResponseLOGINListener.onResponse("FAIL");
                     else {
                         writeToSP(response.getInt("id"), response.getInt("token"));
-                        //Log.d("Login:", readFromSP());
-                        volleyResponseLoginListener.onResponse("SUCCESS");
+                        volleyResponseLOGINListener.onResponse("SUCCESS");
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -118,10 +108,9 @@ public class loginServices {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                volleyResponseLoginListener.onError(error.toString());
+                volleyResponseLOGINListener.onError("Check login failed");
             }
         });
         SingletonRequestQueue.getInstance(context).addToRequestQueue(request);
-
     }
 }

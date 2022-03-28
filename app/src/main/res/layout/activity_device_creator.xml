@@ -15,16 +15,21 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="20dp"
-        android:text="Category"
-        android:textColor="#302D2D" />
+        android:text="@string/category"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        tools:ignore="TextContrastCheck" />
 
     <Spinner
-        android:id="@+id/spinner_cate"
+        android:id="@+id/spin_cate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="20dp" />
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/white"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/name_et"
@@ -34,9 +39,13 @@
         android:layout_marginTop="30dp"
         android:layout_marginRight="20dp"
         android:ems="10"
-        android:hint="Name"
+        android:hint="@string/name"
         android:inputType="textPersonName"
-        android:textColor="#302D2D" />
+        android:textColorHint="@color/white_hint"
+        android:backgroundTint="@color/white_hint"
+        android:textColor="@color/white"
+        tools:ignore="TouchTargetSizeCheck,TextContrastCheck"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/place_et"
@@ -46,9 +55,13 @@
         android:layout_marginTop="30dp"
         android:layout_marginRight="20dp"
         android:ems="10"
-        android:hint="Place"
+        android:hint="@string/place"
+        android:textColorHint="@color/white_hint"
+        android:backgroundTint="@color/white_hint"
         android:inputType="textPersonName"
-        android:textColor="#302D2D" />
+        android:textColor="@color/white"
+        tools:ignore="TextContrastCheck,TouchTargetSizeCheck"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/desc_et"
@@ -57,13 +70,17 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="20dp"
+        android:backgroundTint="@color/white_hint"
         android:ems="10"
         android:fontFamily="sans-serif"
         android:gravity="start|top"
-        android:hint="Description"
+        android:hint="@string/description"
         android:inputType="textMultiLine"
-        android:textColor="#302D2D"
-        android:textSize="20sp" />
+        android:textColor="@color/white"
+        android:textColorHint="@color/white_hint"
+        android:textSize="20sp"
+        tools:ignore="TextContrastCheck,TextContrastCheck"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/add_bt"
@@ -74,18 +91,21 @@
         android:layout_marginRight="20dp"
         android:backgroundTint="#50ACF6"
         android:fontFamily="sans-serif"
-        android:text="Add"
+        android:text="@string/add"
+        android:textColor="@color/white"
         android:textSize="20sp" />
 
     <Button
         android:id="@+id/back_bt"
         android:layout_width="56dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="50dp"
-        android:layout_marginRight="320dp"
+        android:layout_marginEnd="320dp"
         android:backgroundTint="#FF50ACF6"
         app:icon="@drawable/ic_baseline_arrow_back_ios_24"
-        app:iconSize="40dp" />
+        app:iconSize="40dp"
+        app:iconTint="@color/white"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </LinearLayout>
