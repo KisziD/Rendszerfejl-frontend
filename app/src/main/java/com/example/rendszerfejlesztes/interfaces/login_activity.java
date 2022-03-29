@@ -11,10 +11,6 @@ import android.widget.Toast;
 
 import com.example.rendszerfejlesztes.R;
 import com.example.rendszerfejlesztes.device.deviceManager_activity;
-import com.example.rendszerfejlesztes.interfaces.adminPage_activity;
-import com.example.rendszerfejlesztes.interfaces.devicePerson_activity;
-import com.example.rendszerfejlesztes.interfaces.operator_activity;
-import com.example.rendszerfejlesztes.interfaces.repairer_activity;
 import com.example.rendszerfejlesztes.services.loginServices;
 
 public class login_activity extends AppCompatActivity {
@@ -32,6 +28,8 @@ public class login_activity extends AppCompatActivity {
         pwd = findViewById(R.id.pass_et);
         login = findViewById(R.id.login_bt);
 
+        getSupportActionBar().hide();
+
         checkToken();
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -44,19 +42,18 @@ public class login_activity extends AppCompatActivity {
 
     public void checkToken () {
         loginServices ls = new loginServices(this);
-        ls.checkToken(new loginServices.VolleyResponseTokenListener() {
+        ls.checkToken(new loginServices.VolleyResponseTOKENListener() {
             @Override
             public void onError(String message) {
-
+                Toast.makeText(login_activity.this, message, Toast.LENGTH_LONG).show();
             }
-
             @Override
             public void onResponse(String response) {
                     if(response.equals("SUCCESS")) {
                         Intent i = new Intent(login_activity.this, deviceManager_activity.class);
                         startActivity(i);
                     } else {
-                        Toast.makeText(login_activity.this, "Please log in!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(login_activity.this, "Login available", Toast.LENGTH_LONG).show();
                     }
             }
         });
@@ -83,21 +80,20 @@ public class login_activity extends AppCompatActivity {
         }*/
     }
 
-    public void login () {
+    public void login() {
         loginServices ls = new loginServices(this);
-        ls.checkLogin(username.getText().toString(), pwd.getText().toString(), new loginServices.VolleyResponseLoginListener() {
+        ls.checkLogin(username.getText().toString(), pwd.getText().toString(), new loginServices.VolleyResponseLOGINListener() {
             @Override
             public void onError(String message) {
-
+                Toast.makeText(login_activity.this, message, Toast.LENGTH_LONG).show();
             }
-
             @Override
             public void onResponse(String response) {
                 if(response.equals("SUCCESS")) {
                     Intent i = new Intent(login_activity.this, deviceManager_activity.class);
                     startActivity(i);
                 } else {
-                    Toast.makeText(login_activity.this, "Please log in!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(login_activity.this, "Login available", Toast.LENGTH_LONG).show();
                 }
             }
         });

@@ -4,33 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backg"
     android:orientation="vertical"
-    tools:context=".interfaces.login_activity"
-    android:background="@drawable/backg">
+    tools:context=".interfaces.login_activity">
 
 
     <EditText
         android:id="@+id/usern_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Username"
-        android:inputType="textPersonName"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="240dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="30dp"
-        android:layout_marginTop="240dp"/>
+        android:backgroundTint="@color/white_hint"
+        android:ems="10"
+        android:hint="@string/username"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white_hint"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/pass_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/white_hint"
+        android:ems="10"
+        android:hint="@string/password"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white_hint"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/login_bt"
@@ -39,7 +51,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:backgroundTint="#FF50ACF6"
-        android:onClick="login"
-        android:text="Login" />
+        android:text="@string/login"
+        tools:ignore="TextContrastCheck"
+        android:textColor="@color/white"/>
 
 </LinearLayout>

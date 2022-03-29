@@ -4,47 +4,41 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.rendszerfejlesztes.R;
 import com.example.rendszerfejlesztes.models.DeviceModel;
-import com.example.rendszerfejlesztes.services.categoryServices;
 import com.example.rendszerfejlesztes.services.deviceServices;
-import com.example.rendszerfejlesztes.services.loginServices;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class deviceManager_activity extends AppCompatActivity {
 
-    Button devicecreator, categoryadder;
-    Spinner spinner;
+    Button dev_creator, cat_adder, spec_adder;
     ListView list;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_manager);
 
-        categoryadder = findViewById(R.id.button_newcat);
-        devicecreator = findViewById(R.id.button_newdev);
+        cat_adder = findViewById(R.id.new_cat_bt);
+        dev_creator = findViewById(R.id.new_dev_bt);
+        spec_adder = findViewById(R.id.new_spec_bt);
         list = findViewById(R.id.list);
 
-        deviceServices dS = new deviceServices(deviceManager_activity.this);
-        deviceServices.getDevices(new deviceServices.VolleyResponseListener() {
+        getSupportActionBar().hide();
+
+        deviceServices.getDevices(new deviceServices.VolleyResponseGETDEVICESListener() {
             @Override
             public void onError(String message) {
-                Toast.makeText(deviceManager_activity.this, "Something wrong", Toast.LENGTH_LONG).show();
+                Toast.makeText(deviceManager_activity.this, message , Toast.LENGTH_LONG).show();
             }
-
             @Override
             public void onResponse(ArrayList<DeviceModel> deviceModels) {
                     ArrayAdapter arrayAdapter = new ArrayAdapter(deviceManager_activity.this, android.R.layout.simple_list_item_1, deviceModels);
@@ -61,25 +55,28 @@ public class deviceManager_activity extends AppCompatActivity {
         });
 
 
-
-        devicecreator.setOnClickListener(new View.OnClickListener() {
+        dev_creator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent uj = new Intent(getApplicationContext(), deviceCreator_activity.class);
-                startActivity(uj);
+                Intent dev = new Intent(getApplicationContext(), deviceCreator_activity.class);
+                startActivity(dev);
             }
         });
 
-        categoryadder.setOnClickListener(new View.OnClickListener() {
+        cat_adder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent uj = new Intent(getApplicationContext(), categoryCreator_activity.class);
-                startActivity(uj);
+                Intent cat = new Intent(getApplicationContext(), categoryCreator_activity.class);
+                startActivity(cat);
             }
         });
 
-
-
-
+        spec_adder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent spec = new Intent(getApplicationContext(), specialityCreator_activity.class);
+                startActivity(spec);
+            }
+        });
     }
 }

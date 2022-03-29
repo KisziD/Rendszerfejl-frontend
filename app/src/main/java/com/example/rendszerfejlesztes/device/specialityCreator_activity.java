@@ -13,28 +13,26 @@ import android.widget.Toast;
 
 import com.example.rendszerfejlesztes.R;
 import com.example.rendszerfejlesztes.services.categoryServices;
-import com.example.rendszerfejlesztes.services.deviceServices;
+import com.example.rendszerfejlesztes.services.specialtyServices;
 
 import java.util.List;
 
-public class deviceCreator_activity extends AppCompatActivity {
+public class specialityCreator_activity extends AppCompatActivity {
 
-    EditText name, place, desc;
+    EditText spec;
+    Spinner spin;
     Button add, back;
-    Spinner categories;
-    deviceServices dService = new deviceServices(deviceCreator_activity.this);
+    specialtyServices sServices = new specialtyServices();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_device_creator);
+        setContentView(R.layout.activity_specialist_creator);
 
-        categories = findViewById(R.id.spin_cate);
-        name = findViewById(R.id.name_et);
-        place = findViewById(R.id.place_et);
-        desc = findViewById(R.id.desc_et);
-        add = findViewById(R.id.add_bt);
-        back = findViewById(R.id.back_bt);
+        spec = findViewById(R.id.spec_et);
+        spin = findViewById(R.id.spin_categ);
+        add = findViewById(R.id.add_btn);
+        back = findViewById(R.id.back_btn);
 
         getSupportActionBar().hide();
 
@@ -43,13 +41,13 @@ public class deviceCreator_activity extends AppCompatActivity {
             public void onResponse(List<String> ls) {
                 String[] names = ls.toArray(new String[ls.size()]);
                 ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
-                        deviceCreator_activity.this, android.R.layout.simple_spinner_item, names);
+                        specialityCreator_activity.this, android.R.layout.simple_spinner_item, names);
                 spinnerArrayAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
-                categories.setAdapter(spinnerArrayAdapter);
+                spin.setAdapter(spinnerArrayAdapter);
             }
             @Override
-            public void onError(String message){
-                Toast.makeText(deviceCreator_activity.this, message, Toast.LENGTH_LONG).show();
+            public void onError(String message) {
+                Toast.makeText(specialityCreator_activity.this, message, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -57,24 +55,27 @@ public class deviceCreator_activity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dService.addDevice(categories.getSelectedItem().toString(),name.getText().toString(),place.getText().toString(),desc.getText().toString(), new deviceServices.VolleyResponsePOSTListener() {
+                sServices.addSpeciality(spec.getText().toString(), spin.getSelectedItem().toString(), new specialtyServices.VolleyResponsePOSTListener() {
                     @Override
-                    public void onResponse(String message) {
-                        Toast.makeText(deviceCreator_activity.this, message, Toast.LENGTH_LONG).show();
+                    public void onResponse(String response) {
+                        if(response.equals("SUCCESS")) {
+                            Toast.makeText(specialityCreator_activity.this, "Specialty added", Toast.LENGTH_SHORT ).show();
+                        } else {
+                            Toast.makeText(specialityCreator_activity.this, "Specialty already exists", Toast.LENGTH_LONG).show();
+                        }
                     }
                     @Override
                     public void onError(String message) {
-                        Toast.makeText(deviceCreator_activity.this, message, Toast.LENGTH_LONG).show();
+                        Toast.makeText(specialityCreator_activity.this, message, Toast.LENGTH_LONG).show();
                     }
                 });
             }
         });
 
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(getApplicationContext(),deviceManager_activity.class);
+                Intent back = new Intent(getApplicationContext(), deviceManager_activity.class);
                 startActivity(back);
             }
         });

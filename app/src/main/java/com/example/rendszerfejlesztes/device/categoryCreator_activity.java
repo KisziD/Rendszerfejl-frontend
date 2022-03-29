@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,7 +13,6 @@ import android.widget.Toast;
 
 import com.example.rendszerfejlesztes.R;
 import com.example.rendszerfejlesztes.services.categoryServices;
-import com.example.rendszerfejlesztes.services.deviceServices;
 
 import java.util.List;
 
@@ -33,15 +31,16 @@ public class categoryCreator_activity extends AppCompatActivity {
         cat = findViewById(R.id.cat_et);
         add = findViewById(R.id.add_b);
         back  = findViewById(R.id.back_b);
-        spin = findViewById(R.id.spinner_spin);
+        spin = findViewById(R.id.spin_addcate);
+
+        getSupportActionBar().hide();
 
         categoryServices.getCategoryNames(new categoryServices.VolleyResponseCATListener() {
             @Override
             public void onResponse(List<String> ls) {
                 String[] names = new String[ls.size()+1];
                 names[0] = "No parent";
-                for (int i = 0; i < ls.size(); i++)
-                {
+                for (int i = 0; i < ls.size(); i++) {
                     names[i+1] = ls.get(i);
                 }
                 ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(
@@ -49,10 +48,9 @@ public class categoryCreator_activity extends AppCompatActivity {
                 spinnerArrayAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
                 spin.setAdapter(spinnerArrayAdapter);
             }
-
             @Override
             public void onError(String message) {
-                Log.d("ERROR", message);
+                Toast.makeText(categoryCreator_activity.this, message, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -62,16 +60,17 @@ public class categoryCreator_activity extends AppCompatActivity {
             public void onClick(View view) {
             cServices.addCategory(cat.getText().toString(),spin.getSelectedItem().toString(), new categoryServices.VolleyResponsePOSTListener() {
                 @Override
-                public void onError(String message) {
-                    Toast.makeText(categoryCreator_activity.this, message, Toast.LENGTH_LONG).show();
+                public void onResponse(String message) {
+                    Toast.makeText(categoryCreator_activity.this, message, Toast.LENGTH_SHORT).show();
                 }
                 @Override
-                public void onResponse(String message) {
+                public void onError(String message) {
                     Toast.makeText(categoryCreator_activity.this, message, Toast.LENGTH_LONG).show();
                 }
             });
             }
         });
+
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

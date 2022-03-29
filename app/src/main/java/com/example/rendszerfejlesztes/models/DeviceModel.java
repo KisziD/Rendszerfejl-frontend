@@ -21,10 +21,10 @@ public class DeviceModel {
 
     @Override
     public String toString() {
-        return  "Name: " + name + '\n' +
-                "catID: " + categoryName + '\n' +
-                "Location: " + location + '\n' +
-                "Description: " + desc + '\n' ;
+        return  "Name:  " + name + '\n' +
+                "Category:  " + categoryName + '\n' +
+                "Location:  " + location + '\n' +
+                "Description:  " + desc + '\n' ;
     }
 
     public String getName() {
@@ -62,5 +62,4 @@ public class DeviceModel {
     public String getCategoryName() {return categoryName;}
 
     public void setCategoryName(String catName) {this.categoryName = catName;}
-
 }
