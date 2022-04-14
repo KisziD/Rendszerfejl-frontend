@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.example.rendszerfejlesztes.R;
 import com.example.rendszerfejlesztes.services.categoryServices;
-import com.example.rendszerfejlesztes.services.specialtyServices;
+import com.example.rendszerfejlesztes.services.specialityServices;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class specialityCreator_activity extends AppCompatActivity {
     EditText spec;
     Spinner spin;
     Button add, back;
-    specialtyServices sServices = new specialtyServices();
+    specialityServices sServices = new specialityServices();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class specialityCreator_activity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sServices.addSpeciality(spec.getText().toString(), spin.getSelectedItem().toString(), new specialtyServices.VolleyResponsePOSTListener() {
+                sServices.addSpeciality(spec.getText().toString(), spin.getSelectedItem().toString(), new specialityServices.VolleyResponsePOSTListener() {
                     @Override
                     public void onResponse(String response) {
                         if(response.equals("SUCCESS")) {

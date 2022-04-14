@@ -50,7 +50,7 @@ public class login_activity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                     if(response.equals("SUCCESS")) {
-                        Intent i = new Intent(login_activity.this, deviceManager_activity.class);
+                        Intent i = new Intent(login_activity.this, browserPage_activity.class);
                         startActivity(i);
                     } else {
                         Toast.makeText(login_activity.this, "Login available", Toast.LENGTH_LONG).show();
@@ -90,7 +90,7 @@ public class login_activity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 if(response.equals("SUCCESS")) {
-                    Intent i = new Intent(login_activity.this, deviceManager_activity.class);
+                    Intent i = new Intent(login_activity.this, browserPage_activity.class);
                     startActivity(i);
                 } else {
                     Toast.makeText(login_activity.this, "Login available", Toast.LENGTH_LONG).show();
