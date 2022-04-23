@@ -5,13 +5,17 @@ public class CategoryModel {
     private int id;
     private String name;
     private Double norm_h;
+    private int period;
+    private String instructions;
 
     public CategoryModel(){}
 
-    public CategoryModel(int id, String name, Double norm_h){
+    public CategoryModel(int id, String name, Double norm_h, int period, String instructions){
         this.id = id;
         this.name = name;
         this.norm_h = norm_h;
+        this.period = period;
+        this.instructions = instructions;
     }
 
     public void setId(int id){
@@ -24,6 +28,10 @@ public class CategoryModel {
 
     public void setNorm_h(Double norm_h) { this.norm_h = norm_h; }
 
+    public void setPeriod(int period) { this.period = period; }
+
+    public void setInstructions(String instructions) { this.instructions = instructions; }
+
     public int getId(){
         return this.id;
     }
@@ -33,4 +41,8 @@ public class CategoryModel {
     }
 
     public Double getNorm_h() { return norm_h; }
+
+    public int getPeriod() { return period; }
+
+    public String getInstructions() { return instructions; }
 }

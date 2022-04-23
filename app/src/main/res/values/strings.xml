@@ -4,6 +4,8 @@
     <string name="add">Add</string>
     <string name="category">Category</string>
     <string name="norm_hour">Norm Hour</string>
+    <string name="period">Period</string>
+    <string name="instructions">Instructions</string>
     <string name="name">Name</string>
     <string name="place">Place</string>
     <string name="description">Description</string>
