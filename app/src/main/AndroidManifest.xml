@@ -13,13 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rendszerfejlesztes">
         <activity
-            android:name=".speciality.specialistAdder_activity"
-            android:exported="false" />
-        <activity
             android:name=".interfaces.browserPage_activity"
             android:exported="false" />
         <activity
-            android:name=".speciality.specialityAssignment_activity"
+            android:name=".speciality.specialistAdder_activity"
             android:exported="false" />
         <activity
             android:name=".interfaces.adminPage_activity"

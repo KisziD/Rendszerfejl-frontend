@@ -24,38 +24,17 @@ public class specialistServices {
 
     public interface VolleyResponseGETSPECListener {
         void onError(String message);
+
         void onResponse(List<String> ls);
     }
 
-    public final static String SPEC_ADD = "https://kisziftp.tplinkdns.com/api/Specialist/add";
-    public final static String SPEC_GET = "https://kisziftp.tplinkdns.com/api/Specialist/names";
+    public final static String SPEC_ADD = "http://kisziftp.tplinkdns.com/api/Specialist/add";
+    //public final static String SPEC_GET = "https://kisziftp.tplinkdns.com/api/Specialist/names";
 
     static Context context;
 
-    public void addSpecialist(String name, specialistServices.VolleyResponsePOSTListener volleyResponsePOSTListener)
-    {
-        String post_url = SPEC_ADD;
-        JSONObject postData = new JSONObject();
-        try{
-            postData.put("name", name);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, post_url, postData, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                volleyResponsePOSTListener.onResponse("Specialist added");
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                volleyResponsePOSTListener.onError("Specialist addition failed");
-            }
-        });
-        SingletonRequestQueue.getInstance(context).addToRequestQueue(request);
-    }
 
-    public static void getSpecialist(final specialistServices.VolleyResponseGETSPECListener volleyResponseGETSPECListener)
+   /*public static void getSpecialist(final specialistServices.VolleyResponseGETSPECListener volleyResponseGETSPECListener)
     {
         String get_url = SPEC_GET;
         List<String> list = new ArrayList<>();
@@ -80,29 +59,33 @@ public class specialistServices {
             }
         });
         SingletonRequestQueue.getInstance(context).addToRequestQueue(request);
-    }
+    }*/
 
-    public void addSpecialistplus(String name,String spec, specialistServices.VolleyResponsePOSTListener volleyResponsePOSTListener)
+    public void addSpecialist(String name, String username, String password, String role, String qualific, specialistServices.VolleyResponsePOSTListener volleyResponsePOSTListener)
     {
         String post_url = SPEC_ADD;
         JSONObject postData = new JSONObject();
         try{
             postData.put("name", name);
-            postData.put("qualification", spec);
+            postData.put("username", username);
+            postData.put("password", password);
+            postData.put("role", role);
+            postData.put("SpecialityName", qualific);
         } catch (JSONException e) {
             e.printStackTrace();
         }
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, post_url, postData, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                volleyResponsePOSTListener.onResponse("Assigment added");
+                volleyResponsePOSTListener.onResponse("Specialist added");
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                volleyResponsePOSTListener.onError("Assigment failed");
+                volleyResponsePOSTListener.onError("Addition failed");
             }
         });
         SingletonRequestQueue.getInstance(context).addToRequestQueue(request);
     }
+
 }

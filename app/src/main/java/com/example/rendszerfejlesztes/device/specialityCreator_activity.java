@@ -27,7 +27,7 @@ public class specialityCreator_activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_specialist_creator);
+        setContentView(R.layout.activity_speciality_creator);
 
         spec = findViewById(R.id.spec_et);
         spin = findViewById(R.id.spin_categ);

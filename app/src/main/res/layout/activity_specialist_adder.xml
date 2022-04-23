@@ -4,45 +4,102 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backg"
     android:orientation="vertical"
-    tools:context=".speciality.specialistAdder_activity">
+    tools:context=".speciality.specialistAdder_activity"
+    android:background="@drawable/backg">
 
     <EditText
-        android:id="@+id/name_et_sad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="250dp"
-        android:layout_marginRight="20dp"
-        android:ems="10"
-        android:hint="Name"
-        android:textColorHint="@color/white_hint"
-        android:backgroundTint="@color/white_hint"
-        android:inputType="textPersonName"
-        android:textColor="@color/white"
-        tools:ignore="TextContrastCheck,TouchTargetSizeCheck"
-        android:importantForAutofill="no" />
-
-    <Button
-        android:id="@+id/add_btn_sad"
+        android:id="@+id/name_sa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="20dp"
-        android:backgroundTint="#50ACF6"
-        android:fontFamily="sans-serif"
-        android:text="@string/add"
+        android:backgroundTint="@color/white_hint"
+        android:ems="10"
+        android:hint="Full Name"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:textColorHint="@color/white_hint"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/user_name_sa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/white_hint"
+        android:ems="10"
+        android:hint="Username"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white_hint"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/password_sa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/white_hint"
+        android:ems="10"
+        android:hint="Password"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white_hint"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:text="Qualification"
+        android:textColor="@color/white" />
+
+    <Spinner
+        android:id="@+id/spin_qualific"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/white"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
-        android:id="@+id/back_bt_sad"
+        android:id="@+id/add_btn_sa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="#FF50ACF6"
+        android:fontFamily="sans-serif"
+        android:text="@string/add"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/back_btn_sa"
         android:layout_width="56dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="130dp"
         android:layout_marginEnd="320dp"
         android:backgroundTint="#FF50ACF6"
         app:icon="@drawable/ic_baseline_arrow_back_ios_24"

@@ -30,7 +30,7 @@ public class specialityServices {
     static Context context;
 
     public final static String SPEC_POST = "http://kisziftp.tplinkdns.com/api/Speciality/add";
-    public final static String SPEC_GET = "https://kisziftp.tplinkdns.com/api/Speciality/names";
+    public final static String SPEC_GET = "http://kisziftp.tplinkdns.com/api/Speciality/names";
 
 
     public void addSpeciality(String spec, String cat, specialityServices.VolleyResponsePOSTListener volleyResponsePOSTListener) {
@@ -86,7 +86,7 @@ public class specialityServices {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-               volleyResponseGETSPECListener.onError("Getting specialities failed");
+               volleyResponseGETSPECListener.onError(error.toString());
             }
         });
         SingletonRequestQueue.getInstance(context).addToRequestQueue(request);
