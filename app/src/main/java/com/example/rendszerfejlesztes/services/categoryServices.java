@@ -29,16 +29,19 @@ public class categoryServices {
 
     public final static String CAT_POST = "http://kisziftp.tplinkdns.com/api/Category/add";
     public final static String CAT_NAME = "http://kisziftp.tplinkdns.com/api/Category/names";
+    //URL??
+    public final static String CAT_NORM_H = "http://kisziftp.tplinkdns.com/api/Category/";
     static Context context;
 
 
-    public void addCategory(String name, String parent, categoryServices.VolleyResponsePOSTListener volleyResponsePOSTListener) {
+    public void addCategory(String name, String norm_h, String parent, categoryServices.VolleyResponsePOSTListener volleyResponsePOSTListener) {
 
         String post_url = CAT_POST;
 
         JSONObject postData = new JSONObject();
         try {
             postData.put("name", name);
+            postData.put("norm_h", norm_h);
             postData.put("parent", parent);
         } catch (JSONException e) {
             e.printStackTrace();

@@ -18,7 +18,7 @@ import java.util.List;
 
 public class categoryCreator_activity extends AppCompatActivity {
 
-    EditText cat;
+    EditText cat, norm_h;
     Button add,back;
     Spinner spin;
     categoryServices cServices = new categoryServices();
@@ -29,6 +29,7 @@ public class categoryCreator_activity extends AppCompatActivity {
         setContentView(R.layout.activity_category_creator);
 
         cat = findViewById(R.id.cat_et);
+        norm_h = findViewById(R.id.norm_h_et);
         add = findViewById(R.id.add_b);
         back  = findViewById(R.id.back_b);
         spin = findViewById(R.id.spin_addcate);
@@ -58,7 +59,7 @@ public class categoryCreator_activity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            cServices.addCategory(cat.getText().toString(),spin.getSelectedItem().toString(), new categoryServices.VolleyResponsePOSTListener() {
+            cServices.addCategory(cat.getText().toString(), norm_h.getText().toString(), spin.getSelectedItem().toString(), new categoryServices.VolleyResponsePOSTListener() {
                 @Override
                 public void onResponse(String message) {
                     Toast.makeText(categoryCreator_activity.this, message, Toast.LENGTH_SHORT).show();
