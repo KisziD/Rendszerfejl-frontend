@@ -32,13 +32,16 @@ public class categoryServices {
     static Context context;
 
 
-    public void addCategory(String name, String parent, categoryServices.VolleyResponsePOSTListener volleyResponsePOSTListener) {
+    public void addCategory(String name, String norm_h, String period, String instructions, String parent, categoryServices.VolleyResponsePOSTListener volleyResponsePOSTListener) {
 
         String post_url = CAT_POST;
 
         JSONObject postData = new JSONObject();
         try {
             postData.put("name", name);
+            postData.put("norm_h", norm_h);
+            postData.put("period", period);
+            postData.put("instructions", instructions);
             postData.put("parent", parent);
         } catch (JSONException e) {
             e.printStackTrace();

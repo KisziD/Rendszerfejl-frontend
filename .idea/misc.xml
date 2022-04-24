@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/demes/Downloads/Rendszerfejlesztes/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/kissd/Documents/GitHub/Rendszerfejl-frontend/app/src/main/res/layout/activity_category_creator.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/kissd/Documents/GitHub/Rendszerfejl-frontend/app/src/main/res/layout/activity_device_creator.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/kissd/Documents/GitHub/Rendszerfejl-frontend/app/src/main/res/layout/activity_maintenance_creator.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/somog/Documents/Rendszerfejl-frontend/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.267" />
         <entry key="..\:/Users/somog/Documents/Rendszerfejl-frontend/app/src/main/res/layout/activity_admin.xml" value="0.365036231884058" />
         <entry key="..\:/Users/somog/Documents/Rendszerfejl-frontend/app/src/main/res/layout/activity_browser_page.xml" value="0.17831813576494426" />

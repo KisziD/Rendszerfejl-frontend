@@ -13,6 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rendszerfejlesztes">
         <activity
+            android:name=".device.maintenanceCreator_activity"
+            android:exported="true" />
             android:name=".interfaces.browserPage_activity"
             android:exported="false" />
         <activity
