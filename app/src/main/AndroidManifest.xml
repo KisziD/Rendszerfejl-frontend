@@ -15,6 +15,11 @@
         <activity
             android:name=".device.maintenanceCreator_activity"
             android:exported="true" />
+            android:name=".interfaces.browserPage_activity"
+            android:exported="false" />
+        <activity
+            android:name=".speciality.specialistAdder_activity"
+            android:exported="false" />
         <activity
             android:name=".interfaces.adminPage_activity"
             android:exported="true" />
