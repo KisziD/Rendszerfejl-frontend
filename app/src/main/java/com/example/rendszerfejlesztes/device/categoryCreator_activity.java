@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.rendszerfejlesztes.R;
+import com.example.rendszerfejlesztes.interfaces.browserPage_activity;
 import com.example.rendszerfejlesztes.services.categoryServices;
 
 import java.util.List;
@@ -78,7 +79,7 @@ public class categoryCreator_activity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(getApplicationContext(), deviceManager_activity.class);
+                Intent back = new Intent(getApplicationContext(), browserPage_activity.class);
                 startActivity(back);
             }
         });

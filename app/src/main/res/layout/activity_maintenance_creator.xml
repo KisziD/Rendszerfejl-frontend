@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/backg"
     android:orientation="vertical"
-    tools:context=".device.maintenanceCreator_activity">
+    tools:context=".maintanance.maintenanceCreator_activity">
 
     <TextView
         android:id="@+id/deviceID_tv"
@@ -15,7 +15,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="20dp"
-        android:text="@string/deviceID"
+        android:text="@string/device"
         android:textColor="@color/white"
         android:textSize="16sp"
         tools:ignore="TextContrastCheck" />
@@ -30,25 +30,6 @@
         android:backgroundTint="@color/white"
         android:minHeight="48dp"
         tools:ignore="SpeakableTextPresentCheck" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="13dp" />
-
-    <EditText
-        android:id="@+id/date_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:backgroundTint="@color/white_hint"
-        android:ems="10"
-        android:hint="@string/date"
-        android:inputType="textPersonName"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white_hint"
-        tools:ignore="TouchTargetSizeCheck,TextContrastCheck"
-        android:importantForAutofill="no"/>
 
     <EditText
         android:id="@+id/instructions_et"

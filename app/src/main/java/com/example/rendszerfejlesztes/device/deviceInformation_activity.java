@@ -23,7 +23,7 @@ public class deviceInformation_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_information);
 
-        cat = findViewById(R.id.cat_t);
+        cat = findViewById(R.id.dev_name_t);
         name = findViewById(R.id.name_t);
         place = findViewById(R.id.place_t);
         desc = findViewById(R.id.desc_t);

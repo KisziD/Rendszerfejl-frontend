@@ -22,11 +22,11 @@ public class specialistServices {
         void onResponse(String message);
     }
 
-    public interface VolleyResponseGETSPECListener {
+    /*public interface VolleyResponseGETSPECListener {
         void onError(String message);
 
         void onResponse(List<String> ls);
-    }
+    }*/
 
     public final static String SPEC_ADD = "http://kisziftp.tplinkdns.com/api/Specialist/add";
     //public final static String SPEC_GET = "https://kisziftp.tplinkdns.com/api/Specialist/names";
@@ -87,5 +87,4 @@ public class specialistServices {
         });
         SingletonRequestQueue.getInstance(context).addToRequestQueue(request);
     }
-
 }

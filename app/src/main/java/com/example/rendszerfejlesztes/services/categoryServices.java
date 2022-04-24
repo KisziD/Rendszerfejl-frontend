@@ -40,7 +40,7 @@ public class categoryServices {
         try {
             postData.put("name", name);
             postData.put("norm_h", norm_h);
-            postData.put("period", period);
+            postData.put("interval", period);
             postData.put("instructions", instructions);
             postData.put("parent", parent);
         } catch (JSONException e) {

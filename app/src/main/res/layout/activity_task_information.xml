@@ -2,15 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backg"
     android:orientation="vertical"
-    tools:context=".device.deviceInformation_activity"
-    android:background="@drawable/backg">
+    tools:context=".maintanance.taskInformation_activity">
+
 
     <EditText
-        android:id="@+id/dev_name_t"
+        android:id="@+id/dname_t"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -25,7 +25,8 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/name_t"
+
+        android:id="@+id/date_t"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -40,22 +41,8 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/place_t"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="20dp"
-        android:backgroundTint="@color/white_hint"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColor="@color/white"
-        tools:ignore="SpeakableTextPresentCheck" />
 
-    <EditText
-        android:id="@+id/desc_t"
+        android:id="@+id/state_t"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -71,16 +58,15 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
-        android:id="@+id/back_btt"
+        android:id="@+id/back_bt5"
         android:layout_width="56dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="320dp"
         android:backgroundTint="#FF50ACF6"
         app:icon="@drawable/ic_baseline_arrow_back_ios_24"
         app:iconSize="40dp"
         app:iconTint="@color/white"
         tools:ignore="SpeakableTextPresentCheck" />
-
 </LinearLayout>
