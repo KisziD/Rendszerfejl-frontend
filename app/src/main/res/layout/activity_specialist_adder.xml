@@ -17,7 +17,7 @@
         android:layout_marginRight="20dp"
         android:backgroundTint="@color/white_hint"
         android:ems="10"
-        android:hint="Full Name"
+        android:hint="@string/full_name"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:minHeight="48dp"
@@ -34,7 +34,7 @@
         android:layout_marginRight="20dp"
         android:backgroundTint="@color/white_hint"
         android:ems="10"
-        android:hint="Username"
+        android:hint="@string/username"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:minHeight="48dp"
@@ -51,7 +51,7 @@
         android:layout_marginRight="20dp"
         android:backgroundTint="@color/white_hint"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:minHeight="48dp"
@@ -66,8 +66,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="20dp"
-        android:text="Qualification"
-        android:textColor="@color/white" />
+        android:text="@string/qualification"
+        android:textColor="@color/white"
+        tools:ignore="TextContrastCheck" />
 
     <Spinner
         android:id="@+id/spin_qualific"

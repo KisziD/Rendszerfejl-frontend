@@ -4,34 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backg"
     android:orientation="vertical"
-    tools:context=".device.deviceManager_activity"
-    android:background="@drawable/backg">
+    tools:context=".maintanance.taskManager_activity">
 
     <ListView
-        android:id="@+id/list"
+        android:id="@+id/list2"
         android:layout_width="match_parent"
-        android:layout_height="375dp"
+        android:layout_height="430dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="80dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="80dp" />
+        android:layout_marginBottom="30dp" />
 
     <Button
-        android:id="@+id/new_dev_bt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="30dp"
-        android:backgroundTint="#FF50ACF6"
-        android:text="@string/add_device"
-        android:textColor="@color/white"
-        tools:ignore="TextContrastCheck" />
-
-    <Button
-        android:id="@+id/back_bt3"
+        android:id="@+id/back_bt4"
         android:layout_width="56dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"

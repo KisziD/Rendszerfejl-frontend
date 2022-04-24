@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.rendszerfejlesztes.R;
+import com.example.rendszerfejlesztes.interfaces.browserPage_activity;
 import com.example.rendszerfejlesztes.models.DeviceModel;
 import com.example.rendszerfejlesztes.services.deviceServices;
 
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 
 public class deviceManager_activity extends AppCompatActivity {
 
-    Button dev_creator, cat_adder, spec_adder;
+    Button dev_creator, back;
     ListView list;
 
     @Override
@@ -27,10 +28,9 @@ public class deviceManager_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_manager);
 
-        cat_adder = findViewById(R.id.new_cat_bt);
         dev_creator = findViewById(R.id.new_dev_bt);
-        spec_adder = findViewById(R.id.new_spec_bt);
         list = findViewById(R.id.list);
+        back = findViewById(R.id.back_bt3);
 
         getSupportActionBar().hide();
 
@@ -54,7 +54,6 @@ public class deviceManager_activity extends AppCompatActivity {
             }
         });
 
-
         dev_creator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,19 +62,11 @@ public class deviceManager_activity extends AppCompatActivity {
             }
         });
 
-        cat_adder.setOnClickListener(new View.OnClickListener() {
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent cat = new Intent(getApplicationContext(), categoryCreator_activity.class);
-                startActivity(cat);
-            }
-        });
-
-        spec_adder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent spec = new Intent(getApplicationContext(), specialityCreator_activity.class);
-                startActivity(spec);
+                Intent back = new Intent(getApplicationContext(), browserPage_activity.class);
+                startActivity(back);
             }
         });
     }

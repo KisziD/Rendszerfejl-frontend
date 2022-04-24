@@ -13,16 +13,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="50dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="#FF50ACF6"
+        android:text="@string/device_manager"
+        android:textColor="@color/white"
+        tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
+
+    <Button
+        android:id="@+id/task_man_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="30dp"
         android:backgroundTint="#FF50ACF6"
+        android:text="@string/task_manager"
         android:textColor="@color/white"
-        android:text="Device Manager" />
+        tools:ignore="TextContrastCheck" />
 
     <Button
-        android:id="@+id/spec_adder_btn"
+        android:id="@+id/new_cat_bt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -30,7 +44,47 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="30dp"
         android:backgroundTint="#FF50ACF6"
+        android:text="@string/add_category"
         android:textColor="@color/white"
-        android:text="Specialist Adder" />
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/new_spec_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#FF50ACF6"
+        android:text="@string/add_speciality"
+        android:textColor="@color/white"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/spect_adder_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#FF50ACF6"
+        android:text="@string/specialist_adder"
+        android:textColor="@color/white"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/main_cre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#FF50ACF6"
+        android:text="@string/maintenance_creator"
+        android:textColor="@color/white"
+        tools:ignore="TextContrastCheck" />
 
 </LinearLayout>

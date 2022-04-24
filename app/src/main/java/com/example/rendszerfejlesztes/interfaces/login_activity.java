@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.rendszerfejlesztes.R;
-import com.example.rendszerfejlesztes.device.deviceManager_activity;
 import com.example.rendszerfejlesztes.services.loginServices;
 
 public class login_activity extends AppCompatActivity {

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/backg"
     android:orientation="vertical"
-    tools:context=".device.specialityCreator_activity">
+    tools:context=".speciality.specialityCreator_activity">
 
     <EditText
         android:id="@+id/spec_et"
@@ -32,8 +32,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="20dp"
+        android:text="@string/category"
         android:textColor="@color/white"
-        android:text="Category" />
+        tools:ignore="TextContrastCheck" />
 
     <Spinner
         android:id="@+id/spin_categ"

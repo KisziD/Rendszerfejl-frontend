@@ -13,8 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rendszerfejlesztes">
         <activity
-            android:name=".device.maintenanceCreator_activity"
+            android:name=".maintanance.taskInformation_activity"
+            android:exported="false" />
+        <activity
+            android:name=".maintanance.taskManager_activity"
+            android:exported="false" />
+        <activity
+            android:name=".maintanance.maintenanceCreator_activity"
             android:exported="true" />
+        <activity
             android:name=".interfaces.browserPage_activity"
             android:exported="false" />
         <activity
@@ -45,7 +52,7 @@
             android:name=".device.deviceInformation_activity"
             android:exported="false" />
         <activity
-            android:name=".device.specialityCreator_activity"
+            android:name=".speciality.specialityCreator_activity"
             android:exported="false" />
         <activity
             android:name=".interfaces.login_activity"
