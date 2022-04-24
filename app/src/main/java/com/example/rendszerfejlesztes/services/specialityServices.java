@@ -5,23 +5,35 @@ import android.content.Context;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class specialtyServices {
+import java.util.ArrayList;
+import java.util.List;
+
+public class specialityServices {
 
     public interface VolleyResponsePOSTListener {
         void onError(String message);
         void onResponse(String message);
     }
 
+    public interface VolleyResponseGETSPECListener {
+        void onError(String message);
+        void onResponse(List<String> ls);
+    }
+
     static Context context;
 
     public final static String SPEC_POST = "http://kisziftp.tplinkdns.com/api/Speciality/add";
+    public final static String SPEC_GET = "http://kisziftp.tplinkdns.com/api/Speciality/names";
 
-    public void addSpeciality(String spec, String cat, specialtyServices.VolleyResponsePOSTListener volleyResponsePOSTListener) {
+
+    public void addSpeciality(String spec, String cat, specialityServices.VolleyResponsePOSTListener volleyResponsePOSTListener) {
 
         String post_url = SPEC_POST;
 
@@ -48,6 +60,33 @@ public class specialtyServices {
             @Override
             public void onErrorResponse(VolleyError error) {
                 volleyResponsePOSTListener.onError("Speciality addition failed");
+            }
+        });
+        SingletonRequestQueue.getInstance(context).addToRequestQueue(request);
+    }
+
+    public static void getSpeciality(final VolleyResponseGETSPECListener volleyResponseGETSPECListener)
+    {
+        String get_url = SPEC_GET;
+        List<String> list = new ArrayList<>();
+
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, get_url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                        for (int i = 0; i < response.length(); i++) {
+                            JSONObject obj = response.getJSONObject(i);
+                            list.add(obj.getString("name"));
+                        }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                volleyResponseGETSPECListener.onResponse(list);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+               volleyResponseGETSPECListener.onError(error.toString());
             }
         });
         SingletonRequestQueue.getInstance(context).addToRequestQueue(request);
