@@ -10,6 +10,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.rendszerfejlesztes.models.TaskConModel;
 import com.example.rendszerfejlesztes.models.TaskModel;
 
 import java.util.ArrayList;
@@ -25,9 +26,15 @@ public class maintenanceServices {
         void onResponse(ArrayList<TaskModel> taskModels);
     }
 
+    public interface VolleyResponseGETTASKCONNECTIONListener {
+        void onError(String message);
+        void onResponse(ArrayList<TaskConModel> taskConModels);
+    }
+
     public final static String MAINT_POST = "http://kisziftp.tplinkdns.com/api/Maintenance/add";
     public final static String TASK_GET = "http://kisziftp.tplinkdns.com/api/Maintenance/all/";//?
     public final static String TASKS_GET = "http://kisziftp.tplinkdns.com/api/Maintenance";
+    public final static String TASKS_CON = "http://kisziftp.tplinkdns.com/api/Task";
     static Context context;
 
     public void addCategory(String name, String justification, categoryServices.VolleyResponsePOSTListener volleyResponsePOSTListener) {
@@ -114,6 +121,38 @@ public class maintenanceServices {
             }
         });
 
+        SingletonRequestQueue.getInstance(context).addToRequestQueue(request);
+    }
+
+    public static void getTaskConnection(final maintenanceServices.VolleyResponseGETTASKCONNECTIONListener volleyResponseGETTASKCONNECTIONListener) {
+
+        String url = TASKS_CON;
+        ArrayList<TaskConModel> list = new ArrayList<>();
+
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url,null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    for (int i = 0; i < response.length(); i++) {
+                        TaskConModel t = new TaskConModel();
+                        JSONObject taskInfo = response.getJSONObject(i);
+                        t.setId(taskInfo.getInt("id"));
+                        t.setMaintenanceID(taskInfo.getInt("maintenanceID"));
+                        t.setSpecialistID(taskInfo.getInt("specialistID"));
+                        list.add(t);
+                    }
+                }
+                catch (JSONException e){
+                    e.printStackTrace();
+                }
+                volleyResponseGETTASKCONNECTIONListener.onResponse(list);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error){
+                volleyResponseGETTASKCONNECTIONListener.onError("Getting tasks failed");
+            }
+        });
         SingletonRequestQueue.getInstance(context).addToRequestQueue(request);
     }
 }

@@ -13,18 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rendszerfejlesztes">
         <activity
+            android:name=".interfaces.listTasks_activity"
+            android:exported="true" />
+        <activity
             android:name=".maintanance.taskInformation_activity"
             android:exported="false" />
         <activity
             android:name=".maintanance.taskManager_activity"
             android:exported="false" />
-        <activity
-            android:name=".maintanance.maintenanceCreator_activity"
-            android:name=".device.taskManager"
-            android:exported="true" />
-        <activity
-            android:name=".device.maintenanceCreator_activity"
-            android:exported="true" />
         <activity
             android:name=".interfaces.browserPage_activity"
             android:exported="false" />
