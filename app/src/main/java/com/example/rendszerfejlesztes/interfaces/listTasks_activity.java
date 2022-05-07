@@ -75,5 +75,14 @@ public class listTasks_activity extends AppCompatActivity {
                     list.add(tlist.get(j));
         ArrayAdapter results = new ArrayAdapter<TaskModel>(this, android.R.layout.simple_list_item_1, list);
         tasklist.setAdapter(results);
+
+        tasklist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent n = new Intent(listTasks_activity.this, taskStateChanger_activity.class);
+                n.putExtra("SELECTED_ID", list.get(i).id);
+                startActivity(n);
+            }
+        });
     }
 }

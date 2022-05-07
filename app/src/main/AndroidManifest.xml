@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rendszerfejlesztes">
         <activity
+            android:name=".interfaces.taskStateChanger_activity"
+            android:exported="true" />
+        <activity
             android:name=".interfaces.listTasks_activity"
             android:exported="true" />
         <activity

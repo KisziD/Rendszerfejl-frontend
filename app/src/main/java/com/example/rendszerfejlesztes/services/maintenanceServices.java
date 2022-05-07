@@ -31,10 +31,16 @@ public class maintenanceServices {
         void onResponse(ArrayList<TaskConModel> taskConModels);
     }
 
+    public interface VolleyResponseSTATEPOSTListener {
+        void onError(String message);
+        void onResponse(String message);
+    }
+
     public final static String MAINT_POST = "http://kisziftp.tplinkdns.com/api/Maintenance/add";
     public final static String TASK_GET = "http://kisziftp.tplinkdns.com/api/Maintenance/all/";//?
     public final static String TASKS_GET = "http://kisziftp.tplinkdns.com/api/Maintenance";
     public final static String TASKS_CON = "http://kisziftp.tplinkdns.com/api/Task";
+    public final static String MAINT_CHANGE = "http://kisziftp.tplinkdns.com/api/Maintenance/change";
     static Context context;
 
     public void addCategory(String name, String justification, categoryServices.VolleyResponsePOSTListener volleyResponsePOSTListener) {
@@ -58,6 +64,33 @@ public class maintenanceServices {
             @Override
             public void onErrorResponse(VolleyError error) {
                 volleyResponsePOSTListener.onError("Maintenance addition failed");
+            }
+        });
+        SingletonRequestQueue.getInstance(context).addToRequestQueue(request);
+    }
+
+    public static void changeState(String name, String date, String state, maintenanceServices.VolleyResponseSTATEPOSTListener volleyResponseSTATEPOSTListener) {
+
+        String post_url = MAINT_CHANGE;
+
+        JSONObject postData = new JSONObject();
+        try {
+            postData.put("name", name.split(": ")[0]);
+            postData.put("date", date);
+            postData.put("location", name.split(": ")[1]);
+            postData.put("state", state);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, post_url, postData, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                volleyResponseSTATEPOSTListener.onResponse("Maintenance state changed");
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyResponseSTATEPOSTListener.onError("Maintenance state changing is failed");
             }
         });
         SingletonRequestQueue.getInstance(context).addToRequestQueue(request);

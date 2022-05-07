@@ -25,4 +25,6 @@
     <string name="device">Device</string>
     <string name="full_name">Full Name</string>
     <string name="qualification">Qualification</string>
+    <string name="state">State</string>
+    <string name="save">Save</string>
 </resources>
