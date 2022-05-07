@@ -24,5 +24,6 @@ public class operator_activity extends AppCompatActivity {
             String j = getIntent().getStringExtra("job");
             userDatas.setText(u + " (" + j + ")");
         }
+
     }
 }
