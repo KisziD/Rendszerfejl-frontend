@@ -22,6 +22,7 @@ public class taskManager_activity extends AppCompatActivity {
 
     Button back;
     ListView list;
+    String role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,9 @@ public class taskManager_activity extends AppCompatActivity {
 
         list = findViewById(R.id.list2);
         back = findViewById(R.id.back_bt4);
+
+        role = com.example.rendszerfejlesztes.services.loginServices.getSpeciality();
+
 
         getSupportActionBar().hide();
 
@@ -41,9 +45,12 @@ public class taskManager_activity extends AppCompatActivity {
                list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                    @Override
                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                       Intent n = new Intent(taskManager_activity.this, taskInformation_activity.class);
-                       n.putExtra("SELECTED_ID", taskModels.get(i).id);
-                       startActivity(n);
+                       if (role.equals("Operator")  || role.equals("Admin"))
+                       {
+                           Intent n = new Intent(taskManager_activity.this, taskAssignment_activity.class);
+                           n.putExtra("SELECTED_ID", taskModels.get(i).id);
+                           startActivity(n);
+                       }
                    }
                });
            }

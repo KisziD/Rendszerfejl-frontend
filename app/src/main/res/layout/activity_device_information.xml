@@ -9,7 +9,7 @@
     tools:context=".device.deviceInformation_activity"
     android:background="@drawable/backg">
 
-    <EditText
+    <TextView
         android:id="@+id/dev_name_t"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,12 +19,12 @@
         android:backgroundTint="@color/white_hint"
         android:ems="10"
         android:importantForAutofill="no"
-        android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColor="@color/white"
+        android:textSize="20sp"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <EditText
+    <TextView
         android:id="@+id/name_t"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,12 +34,12 @@
         android:backgroundTint="@color/white_hint"
         android:ems="10"
         android:importantForAutofill="no"
-        android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColor="@color/white"
+        android:textSize="20sp"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <EditText
+    <TextView
         android:id="@+id/place_t"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,15 +49,15 @@
         android:backgroundTint="@color/white_hint"
         android:ems="10"
         android:importantForAutofill="no"
-        android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColor="@color/white"
+        android:textSize="20sp"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <EditText
+    <TextView
         android:id="@+id/desc_t"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="101dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="20dp"
@@ -65,9 +65,9 @@
         android:ems="10"
         android:gravity="start|top"
         android:importantForAutofill="no"
-        android:inputType="textMultiLine"
         android:minHeight="48dp"
         android:textColor="@color/white"
+        android:textSize="20sp"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
@@ -75,7 +75,7 @@
         android:layout_width="56dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="320dp"
         android:backgroundTint="#FF50ACF6"
         app:icon="@drawable/ic_baseline_arrow_back_ios_24"

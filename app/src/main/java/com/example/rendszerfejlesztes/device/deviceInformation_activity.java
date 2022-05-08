@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.rendszerfejlesztes.R;
@@ -15,7 +16,7 @@ import com.example.rendszerfejlesztes.services.deviceServices;
 
 public class deviceInformation_activity extends AppCompatActivity {
 
-    EditText cat, name, place, desc;
+    TextView cat, name, place, desc;
     Button back;
 
     @Override

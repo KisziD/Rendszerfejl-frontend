@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.rendszerfejlesztes.R;
+import com.example.rendszerfejlesztes.maintanance.taskList_activity;
 import com.example.rendszerfejlesztes.maintanance.taskManager_activity;
 
 public class specialist_activity extends AppCompatActivity {
@@ -27,7 +28,7 @@ public class specialist_activity extends AppCompatActivity {
         task_man.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent task = new Intent(getApplicationContext(), taskManager_activity.class);
+                Intent task = new Intent(getApplicationContext(), taskList_activity.class);
                 startActivity(task);
             }
         });

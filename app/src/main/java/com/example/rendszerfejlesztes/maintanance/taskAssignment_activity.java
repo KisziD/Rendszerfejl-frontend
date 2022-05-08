@@ -69,7 +69,7 @@ public class taskAssignment_activity extends AppCompatActivity {
             }
         });
 
-        specialistServices.getSpecialist(new specialistServices.VolleyResponseGETSPECListener() {
+        specialistServices.getSpecialist(taskID, new specialistServices.VolleyResponseGETSPECListener() {
             @Override
             public void onResponse(ArrayList<SpecialistModel> specialistModels) {
                 ArrayAdapter arrayAdapter = new ArrayAdapter(taskAssignment_activity.this, android.R.layout.simple_list_item_1, specialistModels);

@@ -7,6 +7,7 @@ public class TaskConModel {
     public Integer SpecialistID;
 
     public TaskConModel(Integer Id, Integer MaintenanceID, Integer SpecialistID) {
+
         this.Id = Id;
         this.MaintenanceID = MaintenanceID;
         this.SpecialistID = SpecialistID;

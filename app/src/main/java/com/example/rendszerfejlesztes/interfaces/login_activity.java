@@ -65,8 +65,6 @@ public class login_activity extends AppCompatActivity {
                                 Intent s = new Intent(login_activity.this, specialist_activity.class);
                                 startActivity(s);
                                 break;
-                           // default:
-                              //  Toast.makeText(this,"No such user is in the system",Toast.LENGTH_LONG).show();
                         }
                     } else {
                         Toast.makeText(login_activity.this, "Login available", Toast.LENGTH_LONG).show();
@@ -86,20 +84,28 @@ public class login_activity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 if(response.equals("SUCCESS")) {
-                    Intent i = new Intent(login_activity.this, adminPage_activity.class);
-                    startActivity(i);
+                    switch(loginServices.getSpeciality()) {
+                        case "Admin":
+                            Intent a = new Intent(login_activity.this, adminPage_activity.class);
+                            startActivity(a);
+                            break;
+                        case "Device manager":
+                            Intent d = new Intent(login_activity.this, deviceManagerPage_activity.class);
+                            startActivity(d);
+                            break;
+                        case "Operator":
+                            Intent o = new Intent(login_activity.this, operator_activity.class);
+                            startActivity(o);
+                            break;
+                        case "Specialist":
+                            Intent s = new Intent(login_activity.this, specialist_activity.class);
+                            startActivity(s);
+                            break;
+                    }
                 } else {
                     Toast.makeText(login_activity.this, "Login available", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
-
-  /*  private void sendData(Intent i) {
-        i.putExtra("user", username.getText().toString());
-        i.putExtra("job", speciality);
-        setResult(RESULT_OK,i);
-        startActivity(i);
-        finish();
-    }*/
 }

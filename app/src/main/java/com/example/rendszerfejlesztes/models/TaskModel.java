@@ -7,14 +7,16 @@ public class TaskModel {
    public String dev_name;
    public String date;
    public String state;
+   public String instructions;
 
 
-    public TaskModel(int _id, String _dev_name, String _date,String _state)
+    public TaskModel(int _id, String _dev_name, String _date,String _state, String _instruc)
     {
         id = _id;
         dev_name = _dev_name;
         date = _date;
         state = _state;
+        instructions = _instruc;
     }
 
     @Override
@@ -55,5 +57,13 @@ public class TaskModel {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions (String instructions) {
+        this.instructions = instructions;
     }
 }
