@@ -6,20 +6,33 @@
     android:layout_height="match_parent"
     android:background="@drawable/backg"
     android:orientation="vertical"
-    tools:context=".interfaces.operator_activity">
+    tools:context=".interfaces.deviceManagerPage_activity" >
 
     <Button
-        android:id="@+id/main_cre_op"
+    android:id="@+id/dev_man_btn_dmp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_vertical"
     android:layout_marginLeft="20dp"
     android:layout_marginTop="50dp"
     android:layout_marginRight="20dp"
-    android:layout_marginBottom="30dp"
     android:backgroundTint="#FF50ACF6"
-    android:text="@string/maintenance_creator"
+    android:text="@string/device_manager"
     android:textColor="@color/white"
-    tools:ignore="TextContrastCheck" />
+    tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
-</LinearLayout>
+    <Button
+    android:id="@+id/new_spec_btn_dmp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="30dp"
+    android:layout_marginRight="20dp"
+    android:backgroundTint="#FF50ACF6"
+    android:text="@string/add_category"
+    android:textColor="@color/white"
+    tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
+
+    </LinearLayout>
+

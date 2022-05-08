@@ -13,10 +13,13 @@ import com.example.rendszerfejlesztes.R;
 import com.example.rendszerfejlesztes.models.TaskModel;
 import com.example.rendszerfejlesztes.services.maintenanceServices;
 
+import java.util.ArrayList;
+
 public class taskInformation_activity extends AppCompatActivity {
 
     EditText name, date, state;
     Button back;
+    Integer taskID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,19 +33,19 @@ public class taskInformation_activity extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
-        Integer devID = 0;
+        taskID = 0;
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if (extras == null) {
-                devID = null;
+                taskID = null;
             } else {
-                devID = extras.getInt("SELECTED_ID");
+                taskID = extras.getInt("SELECTED_ID");
             }
         }else{
-            devID = (Integer) savedInstanceState.getSerializable("SELECTED_ID");
+            taskID = (Integer) savedInstanceState.getSerializable("SELECTED_ID");
         }
 
-        maintenanceServices.getTask(devID, new maintenanceServices.VolleyResponseGETTASKListener() {
+        maintenanceServices.getTask(taskID, new maintenanceServices.VolleyResponseGETTASKListener() {
             @Override
             public void onResponse(TaskModel tm) {
                 name.setText(tm.getDev_name());
@@ -53,7 +56,8 @@ public class taskInformation_activity extends AppCompatActivity {
             public void onError(String message) {
                 Toast.makeText(taskInformation_activity.this, message, Toast.LENGTH_LONG).show();
             }
-    });
+        });
+
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

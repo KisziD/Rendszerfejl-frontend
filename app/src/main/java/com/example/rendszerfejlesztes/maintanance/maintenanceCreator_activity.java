@@ -12,7 +12,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.rendszerfejlesztes.R;
-import com.example.rendszerfejlesztes.interfaces.browserPage_activity;
+import com.example.rendszerfejlesztes.interfaces.adminPage_activity;
 import com.example.rendszerfejlesztes.models.DeviceModel;
 import com.example.rendszerfejlesztes.services.categoryServices;
 import com.example.rendszerfejlesztes.services.deviceServices;
@@ -53,7 +53,6 @@ public class maintenanceCreator_activity extends AppCompatActivity {
                 ArrayAdapter arrayAdapter = new ArrayAdapter(maintenanceCreator_activity.this, android.R.layout.simple_list_item_1, deviceModels);
                 for(int i=0;i<deviceModels.size();i++) {
                     list.add(deviceModels.get(i).name + ": " + deviceModels.get(i).location);
-
                 }
                 String[] deviceIDs = new String[list.size()];
                 for (int i = 0; i < list.size(); i++) {
@@ -87,7 +86,7 @@ public class maintenanceCreator_activity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(getApplicationContext(), browserPage_activity.class);
+                Intent back = new Intent(getApplicationContext(), adminPage_activity.class);
                 startActivity(back);
             }
         });

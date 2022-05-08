@@ -7,6 +7,7 @@ public class TaskModel {
    public String date;
    public String state;
 
+
     public TaskModel(int _id, String _dev_name, String _date,String _state)
     {
         id = _id;

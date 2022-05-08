@@ -42,7 +42,7 @@
         android:ems="10"
         android:fontFamily="sans-serif"
         android:gravity="start|top"
-        android:hint="@string/instructions"
+        android:hint="Justification"
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
         android:textColor="@color/white"

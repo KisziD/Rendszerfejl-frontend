@@ -9,26 +9,26 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.rendszerfejlesztes.R;
-import com.example.rendszerfejlesztes.maintanance.maintenanceCreator_activity;
+import com.example.rendszerfejlesztes.maintanance.taskManager_activity;
 
-public class operator_activity extends AppCompatActivity {
+public class specialist_activity extends AppCompatActivity {
 
-    Button main_cre;
+    Button task_man;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_operator);
+        setContentView(R.layout.activity_specialist);
 
-        main_cre = findViewById(R.id.main_cre_op);
+        task_man = findViewById(R.id.task_man_sp);
 
         getSupportActionBar().hide();
 
-        main_cre.setOnClickListener(new View.OnClickListener() {
+        task_man.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent main = new Intent(getApplicationContext(), maintenanceCreator_activity.class);
-                startActivity(main);
+                Intent task = new Intent(getApplicationContext(), taskManager_activity.class);
+                startActivity(task);
             }
         });
     }
