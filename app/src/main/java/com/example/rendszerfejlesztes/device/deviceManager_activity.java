@@ -12,7 +12,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.rendszerfejlesztes.R;
-import com.example.rendszerfejlesztes.interfaces.browserPage_activity;
+import com.example.rendszerfejlesztes.interfaces.adminPage_activity;
 import com.example.rendszerfejlesztes.models.DeviceModel;
 import com.example.rendszerfejlesztes.services.deviceServices;
 
@@ -65,7 +65,7 @@ public class deviceManager_activity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(getApplicationContext(), browserPage_activity.class);
+                Intent back = new Intent(getApplicationContext(), adminPage_activity.class);
                 startActivity(back);
             }
         });

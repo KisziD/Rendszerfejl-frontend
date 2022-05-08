@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backg"
     android:orientation="vertical"
-    tools:context=".maintanance.taskInformation_activity">
+    android:background="@drawable/backg"
+    tools:context=".maintanance.taskAssignment_activity">
 
 
     <EditText
-        android:id="@+id/dname_t"
+        android:id="@+id/dname_ta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="150dp"
         android:layout_marginRight="20dp"
         android:backgroundTint="@color/white_hint"
         android:clickable="false"
@@ -26,7 +26,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/date_t"
+        android:id="@+id/date_ta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -42,7 +42,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/state_t"
+        android:id="@+id/state_ta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -58,12 +58,32 @@
         android:textColor="@color/white"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <Spinner
+        android:id="@+id/spec_spin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"/>
+
     <Button
-        android:id="@+id/back_bt5"
+        android:id="@+id/add_btn_ta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF50ACF6"
+        android:text="@string/add"
+        tools:ignore="TextContrastCheck"
+        android:textColor="@color/white"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp" />
+
+    <Button
+        android:id="@+id/back_bt5_ta"
         android:layout_width="56dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="320dp"
         android:backgroundTint="#FF50ACF6"
         app:icon="@drawable/ic_baseline_arrow_back_ios_24"

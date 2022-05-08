@@ -25,6 +25,10 @@ public class maintenanceServices {
         void onError(String message);
         void onResponse(ArrayList<TaskModel> taskModels);
     }
+    public interface VolleyResponsePOSTListener {
+        void onError(String message);
+        void onResponse(String message);
+    }
 
     public interface VolleyResponseGETTASKCONNECTIONListener {
         void onError(String message);
@@ -157,6 +161,27 @@ public class maintenanceServices {
         SingletonRequestQueue.getInstance(context).addToRequestQueue(request);
     }
 
+
+    public static void postTaskID(Integer taskID, String specID , final maintenanceServices.VolleyResponsePOSTListener volleyResponsePOSTListener)
+    {
+        String post_url = " ";
+        JSONObject postData = new JSONObject();
+        try{
+            postData.put("taskid", taskID);
+            postData.put("specid", Integer.parseInt(specID.split(": ")[0]));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, post_url, postData, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                volleyResponsePOSTListener.onResponse("OK");
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyResponsePOSTListener.onError("Error");
+
     public static void getTaskConnection(final maintenanceServices.VolleyResponseGETTASKCONNECTIONListener volleyResponseGETTASKCONNECTIONListener) {
 
         String url = TASKS_CON;
@@ -184,6 +209,7 @@ public class maintenanceServices {
             @Override
             public void onErrorResponse(VolleyError error){
                 volleyResponseGETTASKCONNECTIONListener.onError("Getting tasks failed");
+
             }
         });
         SingletonRequestQueue.getInstance(context).addToRequestQueue(request);

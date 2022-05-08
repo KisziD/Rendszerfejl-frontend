@@ -7,6 +7,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.rendszerfejlesztes.models.SpecialistModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,32 +23,34 @@ public class specialistServices {
         void onResponse(String message);
     }
 
-    /*public interface VolleyResponseGETSPECListener {
+    public interface VolleyResponseGETSPECListener {
         void onError(String message);
 
-        void onResponse(List<String> ls);
-    }*/
+        void onResponse(ArrayList<SpecialistModel> specialistModels);
+    }
 
     public final static String SPEC_ADD = "http://kisziftp.tplinkdns.com/api/Specialist/add";
-    //public final static String SPEC_GET = "https://kisziftp.tplinkdns.com/api/Specialist/names";
+    public final static String SPEC_GET = "https://kisziftp.tplinkdns.com/api/Specialist/names";
 
     static Context context;
 
 
-   /*public static void getSpecialist(final specialistServices.VolleyResponseGETSPECListener volleyResponseGETSPECListener)
-    {
-        String get_url = SPEC_GET;
-        List<String> list = new ArrayList<>();
 
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, get_url, null, new Response.Listener<JSONArray>() {
+   public static void getSpecialist(final specialistServices.VolleyResponseGETSPECListener volleyResponseGETSPECListener)
+    {
+        String get_url = SPEC_GET ;
+        ArrayList<SpecialistModel> list = new ArrayList<>();
+
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, get_url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 try {
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject obj = response.getJSONObject(i);
-                        list.add(obj.getString("name"));
+
+                        list.add(new SpecialistModel(obj.getInt("id"), obj.getString("name")));
                     }
-                } catch (JSONException e) {
+                }catch (JSONException e) {
                     e.printStackTrace();
                 }
                 volleyResponseGETSPECListener.onResponse(list);
@@ -59,7 +62,7 @@ public class specialistServices {
             }
         });
         SingletonRequestQueue.getInstance(context).addToRequestQueue(request);
-    }*/
+    }
 
     public void addSpecialist(String name, String username, String password, String role, String qualific, specialistServices.VolleyResponsePOSTListener volleyResponsePOSTListener)
     {

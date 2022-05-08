@@ -13,11 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rendszerfejlesztes">
         <activity
+
+            android:name=".maintanance.taskAssignment_activity"
+            android:exported="false" />
+
             android:name=".interfaces.taskStateChanger_activity"
             android:exported="true" />
         <activity
             android:name=".interfaces.listTasks_activity"
             android:exported="true" />
+
         <activity
             android:name=".maintanance.taskInformation_activity"
             android:exported="false" />
@@ -25,16 +30,18 @@
             android:name=".maintanance.taskManager_activity"
             android:exported="false" />
         <activity
-            android:name=".interfaces.browserPage_activity"
+
+            android:name=".maintanance.maintenanceCreator_activity"
+            android:exported="true" />
+        <activity
+            android:name=".interfaces.adminPage_activity"
+
             android:exported="false" />
         <activity
             android:name=".speciality.specialistAdder_activity"
             android:exported="false" />
         <activity
-            android:name=".interfaces.adminPage_activity"
-            android:exported="true" />
-        <activity
-            android:name=".interfaces.devicePerson_activity"
+            android:name=".interfaces.deviceManagerPage_activity"
             android:exported="true" />
         <activity
             android:name=".device.deviceManager_activity"
@@ -43,7 +50,7 @@
             android:name=".interfaces.operator_activity"
             android:exported="true" />
         <activity
-            android:name=".interfaces.repairer_activity"
+            android:name=".interfaces.specialist_activity"
             android:exported="true" />
         <activity
             android:name=".device.categoryCreator_activity"

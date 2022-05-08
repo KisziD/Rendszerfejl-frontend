@@ -25,6 +25,13 @@ public class loginServices {
 
     static Context context;
 
+    public static String getSpeciality()
+    {
+        SharedPreferences sharedPref = context.getSharedPreferences("Rendszerfejlesztes", Context.MODE_PRIVATE);
+
+        return sharedPref.getString("role", "none");
+    }
+
     public loginServices(Context context) {
         this.context = context;
     }
@@ -40,10 +47,11 @@ public class loginServices {
         }
     }
 
-    private void writeToSP(Integer id, Integer token) {
+    private void writeToSP(Integer id, String data) {
         SharedPreferences sharedPref = context.getSharedPreferences("Rendszerfejlesztes", Context.MODE_PRIVATE);
         sharedPref.edit().putInt("id", id).commit();
-        sharedPref.edit().putInt("token", token).commit();
+        sharedPref.edit().putInt("token", Integer.parseInt(data.split(":")[0])).commit();
+        sharedPref.edit().putString("role", data.split(":")[1]).commit();
     }
 
     public void checkToken(VolleyResponseTOKENListener volleyResponseTOKENListener) {
@@ -95,10 +103,10 @@ public class loginServices {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    if (response.getInt("token")==0)
+                    if (response.getString("data")=="0")
                         volleyResponseLOGINListener.onResponse("FAIL");
                     else {
-                        writeToSP(response.getInt("id"), response.getInt("token"));
+                        writeToSP(response.getInt("id"), response.getString("data"));
                         volleyResponseLOGINListener.onResponse("SUCCESS");
                     }
                 } catch (JSONException e) {
@@ -113,4 +121,7 @@ public class loginServices {
         });
         SingletonRequestQueue.getInstance(context).addToRequestQueue(request);
     }
+
+
+
 }
