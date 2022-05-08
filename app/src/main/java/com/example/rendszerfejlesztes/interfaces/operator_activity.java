@@ -22,6 +22,7 @@ public class operator_activity extends AppCompatActivity {
 
         main_cre = findViewById(R.id.main_cre_op);
 
+
         getSupportActionBar().hide();
 
         main_cre.setOnClickListener(new View.OnClickListener() {
@@ -31,5 +32,9 @@ public class operator_activity extends AppCompatActivity {
                 startActivity(main);
             }
         });
+
+        
+
+
     }
 }

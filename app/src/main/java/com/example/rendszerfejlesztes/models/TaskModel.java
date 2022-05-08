@@ -2,6 +2,7 @@ package com.example.rendszerfejlesztes.models;
 
 public class TaskModel {
 
+
     public int id;
    public String dev_name;
    public String date;
