@@ -13,7 +13,9 @@ import android.widget.Toast;
 
 import com.example.rendszerfejlesztes.R;
 import com.example.rendszerfejlesztes.interfaces.adminPage_activity;
+import com.example.rendszerfejlesztes.interfaces.operator_activity;
 import com.example.rendszerfejlesztes.models.TaskModel;
+import com.example.rendszerfejlesztes.services.loginServices;
 import com.example.rendszerfejlesztes.services.maintenanceServices;
 
 import java.util.ArrayList;
@@ -22,6 +24,7 @@ public class taskManager_activity extends AppCompatActivity {
 
     Button back;
     ListView list;
+    String role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,9 @@ public class taskManager_activity extends AppCompatActivity {
 
         list = findViewById(R.id.list2);
         back = findViewById(R.id.back_bt4);
+
+        role = com.example.rendszerfejlesztes.services.loginServices.getSpeciality();
+
 
         getSupportActionBar().hide();
 
@@ -41,9 +47,12 @@ public class taskManager_activity extends AppCompatActivity {
                list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                    @Override
                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                       Intent n = new Intent(taskManager_activity.this, taskInformation_activity.class);
-                       n.putExtra("SELECTED_ID", taskModels.get(i).id);
-                       startActivity(n);
+                       if (role.equals("Operator")  || role.equals("Admin"))
+                       {
+                           Intent n = new Intent(taskManager_activity.this, taskAssignment_activity.class);
+                           n.putExtra("SELECTED_ID", taskModels.get(i).id);
+                           startActivity(n);
+                       }
                    }
                });
            }
@@ -56,8 +65,15 @@ public class taskManager_activity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(getApplicationContext(), adminPage_activity.class);
-                startActivity(back);
+                if(loginServices.getSpeciality().equals("Admin"))
+                {
+                    Intent back = new Intent(getApplicationContext(), adminPage_activity.class);
+                    startActivity(back);
+                }else if (loginServices.getSpeciality().equals("Operator"))
+                {
+                    Intent back = new Intent(getApplicationContext(), operator_activity.class);
+                    startActivity(back);
+                }
             }
         });
     }

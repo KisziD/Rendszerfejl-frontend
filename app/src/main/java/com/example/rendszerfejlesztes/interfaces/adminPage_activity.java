@@ -17,7 +17,7 @@ import com.example.rendszerfejlesztes.speciality.specialistAdder_activity;
 
 public class adminPage_activity extends AppCompatActivity {
 
-    Button dev_man, spec_adder, spect_adder, main_cre, cat_adder, task_man;
+    Button dev_man, spec_adder, spect_adder, main_cre, cat_adder, task_man, back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,7 @@ public class adminPage_activity extends AppCompatActivity {
         spec_adder = findViewById(R.id.new_spec_bt);
         spect_adder = findViewById(R.id.spect_adder_btn);
         main_cre = findViewById(R.id.main_cre);
+        back = findViewById(R.id.back_bt10);
 
         getSupportActionBar().hide();
 
@@ -78,6 +79,14 @@ public class adminPage_activity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent main = new Intent(getApplicationContext(), maintenanceCreator_activity.class);
                 startActivity(main);
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent login = new Intent(getApplicationContext(), login_activity.class);
+                startActivity(login);
             }
         });
 

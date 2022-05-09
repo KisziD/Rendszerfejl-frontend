@@ -10,10 +10,11 @@ import android.widget.TextView;
 
 import com.example.rendszerfejlesztes.R;
 import com.example.rendszerfejlesztes.maintanance.maintenanceCreator_activity;
+import com.example.rendszerfejlesztes.maintanance.taskManager_activity;
 
 public class operator_activity extends AppCompatActivity {
 
-    Button main_cre;
+    Button main_cre, task_man, back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,8 @@ public class operator_activity extends AppCompatActivity {
         setContentView(R.layout.activity_operator);
 
         main_cre = findViewById(R.id.main_cre_op);
+        back = findViewById(R.id.back_bt7);
+        task_man = findViewById(R.id.task_man_op);
 
 
         getSupportActionBar().hide();
@@ -33,8 +36,20 @@ public class operator_activity extends AppCompatActivity {
             }
         });
 
-        
+        task_man.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent task = new Intent(getApplicationContext(), taskManager_activity.class);
+                startActivity(task);
+            }
+        });
 
-
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent back = new Intent(getApplicationContext(), login_activity.class);
+                startActivity(back);
+            }
+        });
     }
 }

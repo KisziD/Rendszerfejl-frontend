@@ -26,7 +26,7 @@ public class SpecialistModel {
         return name;
     }
 
-    public void setName(String dev_name) {
+    public void setName(String name) {
         this.name = name;
     }
 }

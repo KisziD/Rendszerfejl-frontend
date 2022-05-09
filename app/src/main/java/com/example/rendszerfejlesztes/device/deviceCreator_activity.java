@@ -74,8 +74,8 @@ public class deviceCreator_activity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(getApplicationContext(),deviceManager_activity.class);
-                startActivity(back);
+                    Intent back = new Intent(getApplicationContext(),deviceManager_activity.class);
+                    startActivity(back);
             }
         });
     }

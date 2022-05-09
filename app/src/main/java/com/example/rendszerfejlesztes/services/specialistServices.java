@@ -1,6 +1,7 @@
 package com.example.rendszerfejlesztes.services;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -30,24 +31,24 @@ public class specialistServices {
     }
 
     public final static String SPEC_ADD = "http://kisziftp.tplinkdns.com/api/Specialist/add";
-    public final static String SPEC_GET = "https://kisziftp.tplinkdns.com/api/Specialist/names";
+    public final static String SPEC_GET = "http://kisziftp.tplinkdns.com/api/task/esp/";
 
     static Context context;
 
 
 
-   public static void getSpecialist(final specialistServices.VolleyResponseGETSPECListener volleyResponseGETSPECListener)
+   public static void getSpecialist(Integer taskID, final specialistServices.VolleyResponseGETSPECListener volleyResponseGETSPECListener)
     {
-        String get_url = SPEC_GET ;
+        String get_url = SPEC_GET + taskID ;
+        Log.d("url", get_url);
         ArrayList<SpecialistModel> list = new ArrayList<>();
 
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, get_url, null, new Response.Listener<JSONArray>() {
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, get_url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 try {
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject obj = response.getJSONObject(i);
-
                         list.add(new SpecialistModel(obj.getInt("id"), obj.getString("name")));
                     }
                 }catch (JSONException e) {
@@ -59,6 +60,7 @@ public class specialistServices {
             @Override
             public void onErrorResponse(VolleyError error) {
                 volleyResponseGETSPECListener.onError("Getting specialities failed");
+
             }
         });
         SingletonRequestQueue.getInstance(context).addToRequestQueue(request);

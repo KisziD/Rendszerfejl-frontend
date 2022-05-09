@@ -28,7 +28,6 @@ public class loginServices {
     public static String getSpeciality()
     {
         SharedPreferences sharedPref = context.getSharedPreferences("Rendszerfejlesztes", Context.MODE_PRIVATE);
-
         return sharedPref.getString("role", "none");
     }
 
@@ -103,10 +102,10 @@ public class loginServices {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    if (response.getString("data")=="0")
+                    if (response.getString("token")=="0")
                         volleyResponseLOGINListener.onResponse("FAIL");
                     else {
-                        writeToSP(response.getInt("id"), response.getString("data"));
+                        writeToSP(response.getInt("id"), response.getString("token"));
                         volleyResponseLOGINListener.onResponse("SUCCESS");
                     }
                 } catch (JSONException e) {
