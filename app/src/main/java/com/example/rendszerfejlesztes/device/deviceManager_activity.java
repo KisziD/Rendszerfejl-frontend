@@ -13,8 +13,10 @@ import android.widget.Toast;
 
 import com.example.rendszerfejlesztes.R;
 import com.example.rendszerfejlesztes.interfaces.adminPage_activity;
+import com.example.rendszerfejlesztes.interfaces.deviceManagerPage_activity;
 import com.example.rendszerfejlesztes.models.DeviceModel;
 import com.example.rendszerfejlesztes.services.deviceServices;
+import com.example.rendszerfejlesztes.services.loginServices;
 
 import java.util.ArrayList;
 
@@ -65,8 +67,15 @@ public class deviceManager_activity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(getApplicationContext(), adminPage_activity.class);
-                startActivity(back);
+                if (loginServices.getSpeciality().equals("Admin"))
+                {
+                    Intent back = new Intent(getApplicationContext(), adminPage_activity.class);
+                    startActivity(back);
+                }else if (loginServices.getSpeciality().equals("Device manager"))
+                {
+                    Intent back = new Intent(getApplicationContext(), deviceManagerPage_activity.class);
+                    startActivity(back);
+                }
             }
         });
     }

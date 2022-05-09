@@ -13,9 +13,11 @@ import android.widget.Toast;
 
 import com.example.rendszerfejlesztes.R;
 import com.example.rendszerfejlesztes.interfaces.adminPage_activity;
+import com.example.rendszerfejlesztes.interfaces.operator_activity;
 import com.example.rendszerfejlesztes.models.DeviceModel;
 import com.example.rendszerfejlesztes.services.categoryServices;
 import com.example.rendszerfejlesztes.services.deviceServices;
+import com.example.rendszerfejlesztes.services.loginServices;
 import com.example.rendszerfejlesztes.services.maintenanceServices;
 
 import java.util.ArrayList;
@@ -86,8 +88,15 @@ public class maintenanceCreator_activity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(getApplicationContext(), adminPage_activity.class);
-                startActivity(back);
+                if (loginServices.getSpeciality().equals("Admin"))
+                {
+                    Intent back = new Intent(getApplicationContext(), adminPage_activity.class);
+                    startActivity(back);
+                }else if (loginServices.getSpeciality().equals("Operator"))
+                {
+                    Intent back = new Intent(getApplicationContext(), operator_activity.class);
+                    startActivity(back);
+                }
             }
         });
     }

@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.rendszerfejlesztes.R;
+import com.example.rendszerfejlesztes.maintanance.taskList_activity;
 import com.example.rendszerfejlesztes.services.loginServices;
 
 public class login_activity extends AppCompatActivity {
@@ -62,7 +63,7 @@ public class login_activity extends AppCompatActivity {
                                 startActivity(o);
                                 break;
                             case "Specialist":
-                                Intent s = new Intent(login_activity.this, specialist_activity.class);
+                                Intent s = new Intent(login_activity.this, taskList_activity.class);
                                 startActivity(s);
                                 break;
                         }
@@ -98,7 +99,7 @@ public class login_activity extends AppCompatActivity {
                             startActivity(o);
                             break;
                         case "Specialist":
-                            Intent s = new Intent(login_activity.this, specialist_activity.class);
+                            Intent s = new Intent(login_activity.this, taskList_activity.class);
                             startActivity(s);
                             break;
                     }

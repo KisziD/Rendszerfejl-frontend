@@ -23,7 +23,7 @@ public class TaskModel {
     public String toString() {
         return  "Name:  " + dev_name + '\n' +
                 "Date  " + date + '\n' +
-                "State:  " + state + '\n' ;
+                "State:  " + state + '\n';
     }
     public TaskModel() {}
 

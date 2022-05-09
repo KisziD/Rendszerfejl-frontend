@@ -46,9 +46,6 @@
             android:name=".interfaces.operator_activity"
             android:exported="true" />
         <activity
-            android:name=".interfaces.specialist_activity"
-            android:exported="true" />
-        <activity
             android:name=".device.categoryCreator_activity"
             android:exported="false" />
         <activity

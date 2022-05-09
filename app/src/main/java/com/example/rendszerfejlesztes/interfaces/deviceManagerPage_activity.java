@@ -6,15 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.rendszerfejlesztes.R;
+import com.example.rendszerfejlesztes.device.categoryCreator_activity;
 import com.example.rendszerfejlesztes.device.deviceManager_activity;
-import com.example.rendszerfejlesztes.speciality.specialityCreator_activity;
 
 public class deviceManagerPage_activity extends AppCompatActivity {
 
-    Button dev_man, spec_adder;
+    Button dev_man, cat_adder, back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +21,8 @@ public class deviceManagerPage_activity extends AppCompatActivity {
         setContentView(R.layout.activity_device_manager_page);
 
         dev_man = findViewById(R.id.dev_man_btn_dmp);
-        spec_adder = findViewById(R.id.new_spec_btn_dmp);
-
+        cat_adder = findViewById(R.id.add_cat_btn_dmp);
+        back = findViewById(R.id.back_bt6);
 
         getSupportActionBar().hide();
 
@@ -35,11 +34,19 @@ public class deviceManagerPage_activity extends AppCompatActivity {
             }
         });
 
-        spec_adder.setOnClickListener(new View.OnClickListener() {
+        cat_adder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent spec = new Intent(getApplicationContext(), specialityCreator_activity.class);
-                startActivity(spec);
+                Intent cat = new Intent(getApplicationContext(), categoryCreator_activity.class);
+                startActivity(cat);
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    Intent back = new Intent(getApplicationContext(), login_activity.class);
+                    startActivity(back);
             }
         });
     }
